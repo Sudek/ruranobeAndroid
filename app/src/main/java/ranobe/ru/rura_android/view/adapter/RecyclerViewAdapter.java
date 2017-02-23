@@ -20,7 +20,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
   }
 
   @Override public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-    View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.project_layout, viewGroup, false);
+    View v = LayoutInflater.from(viewGroup.getContext())
+        .inflate(R.layout.project_layout, viewGroup, false);
     return new ViewHolder(v);
   }
 
@@ -33,11 +34,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     return projects.size();
   }
 
-   class ViewHolder extends RecyclerView.ViewHolder{
+  class ViewHolder extends RecyclerView.ViewHolder {
 
-     private TextView name;
+    private TextView name;
 
-     public ViewHolder(View itemView) {
+    public ViewHolder(View itemView) {
       super(itemView);
       name = (TextView) itemView.findViewById(R.id.textView);
     }

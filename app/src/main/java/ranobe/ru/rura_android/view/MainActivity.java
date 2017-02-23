@@ -16,11 +16,6 @@ import ranobe.ru.rura_android.view.adapter.RecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity implements View {
 
-  //@Bind(R.id.recyclerView)
-  //RecyclerView recyclerView;
-  //@Bind(R.id.button)
-  //Button button;
-
   private Presenter presenter;
   private RecyclerViewAdapter adapter;
 

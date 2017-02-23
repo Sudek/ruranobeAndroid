@@ -5,21 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class Project {
 
-  @SerializedName("projectId")
-  @Expose
-  private Integer projectId;
-  @SerializedName("url")
-  @Expose
-  private String url;
-  @SerializedName("title")
-  @Expose
-  private String title;
-  @SerializedName("orderNumber")
-  @Expose
-  private Integer orderNumber;
-  //@SerializedName("image")
-  //@Expose
-  //private Image image;
+  @SerializedName("projectId") @Expose private Integer projectId;
+  @SerializedName("url") @Expose private String url;
+  @SerializedName("title") @Expose private String title;
+  @SerializedName("orderNumber") @Expose private Integer orderNumber;
 
   public String getTitle() {
     return title;
@@ -53,11 +42,4 @@ public class Project {
     this.orderNumber = orderNumber;
   }
 
-  //public Image getImage() {
-  //  return image;
-  //}
-  //
-  //public void setImage(Image image) {
-  //  this.image = image;
-  //}
 }

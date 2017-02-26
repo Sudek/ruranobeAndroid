@@ -1,6 +1,7 @@
 package ranobe.ru.rura_android.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import ranobe.ru.rura_android.model.data.Project;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
   private List<Project> projects = new ArrayList<>();
+  private static final String TAG = "RecyclerViewAdapter";
+
 
   public void setProjects(List<Project> projects) {
     this.projects = projects;
@@ -21,7 +24,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
   @Override public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
     View v = LayoutInflater.from(viewGroup.getContext())
-        .inflate(R.layout.project_layout, viewGroup, false);
+        .inflate(R.layout.project_list_layout, viewGroup, false);
     return new ViewHolder(v);
   }
 
@@ -41,6 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder(View itemView) {
       super(itemView);
       name = (TextView) itemView.findViewById(R.id.textView);
+      itemView.setOnClickListener(view -> Log.d(TAG, "clicked - " + getAdapterPosition()));
     }
   }
 }

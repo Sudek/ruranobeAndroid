@@ -1,2 +1,2 @@
 # ruranobeAndroid
-anroid version ruranobe.ru
+android version ruranobe.ru

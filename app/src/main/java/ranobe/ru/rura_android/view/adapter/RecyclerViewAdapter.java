@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.view.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.model.data.Project;
+import ranobe.ru.rura_android.view.ProjectActivity;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -21,7 +23,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     this.projects = projects;
     notifyDataSetChanged();
   }
-
   @Override public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
     View v = LayoutInflater.from(viewGroup.getContext())
         .inflate(R.layout.project_list_layout, viewGroup, false);
@@ -31,6 +32,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
   @Override public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
     Project project = projects.get(position);
     holder.name.setText(project.getTitle());
+    holder.itemView.setOnClickListener(view -> {
+      view.getContext().startActivity(new Intent(view.getContext(), ProjectActivity.class));
+      Log.d(TAG, "onclick " + position);
+    });
   }
 
   @Override public int getItemCount() {
@@ -44,7 +49,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder(View itemView) {
       super(itemView);
       name = (TextView) itemView.findViewById(R.id.textView);
-      itemView.setOnClickListener(view -> Log.d(TAG, "clicked - " + getAdapterPosition()));
     }
   }
 }

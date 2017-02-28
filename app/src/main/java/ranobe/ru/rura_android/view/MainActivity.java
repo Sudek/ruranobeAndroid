@@ -1,6 +1,5 @@
 package ranobe.ru.rura_android.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements View {
 
     button.setOnClickListener(v -> {
       presenter.onSearchButtonClick();
-      Log.d(TAG, "click");
-      Intent intent = new Intent(this, ProjectActivity.class);
-      startActivity(intent);
     });
   }
 
@@ -50,10 +46,9 @@ public class MainActivity extends AppCompatActivity implements View {
   }
 
   @Override public void showError(String error) {
-
   }
 
   @Override public void showEmptyList() {
-    Log.d("Rura", "emptyList");
+    Log.d(TAG, "emptyList");
   }
 }

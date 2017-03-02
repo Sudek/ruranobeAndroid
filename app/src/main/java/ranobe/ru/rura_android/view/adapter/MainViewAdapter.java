@@ -13,7 +13,7 @@ import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.model.data.Project;
 import ranobe.ru.rura_android.view.ProjectActivity;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHolder> {
 
   private List<Project> projects = new ArrayList<>();
   private static final String TAG = "RecyclerViewAdapter";
@@ -29,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     return new ViewHolder(v);
   }
 
-  @Override public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
+  @Override public void onBindViewHolder(MainViewAdapter.ViewHolder holder, int position) {
     Project project = projects.get(position);
     holder.name.setText(project.getTitle());
     holder.itemView.setOnClickListener(view -> {

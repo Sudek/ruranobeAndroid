@@ -3,7 +3,7 @@ package ranobe.ru.rura_android.view;
 import java.util.List;
 import ranobe.ru.rura_android.model.data.Project;
 
-public interface View {
+public interface MainView {
 
   void showData(List<Project> projects);
 

@@ -1,4 +1,5 @@
 package ranobe.ru.rura_android.view;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -6,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import ranobe.ru.rura_android.R;
 
-public class ProjectFragment extends Fragment {
-  public ProjectFragment() {
+public class ProjectInfoFragment extends Fragment {
+  public ProjectInfoFragment() {
     // Required empty public constructor
   }
 

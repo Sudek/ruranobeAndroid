@@ -4,7 +4,7 @@ import java.util.List;
 import ranobe.ru.rura_android.model.Model;
 import ranobe.ru.rura_android.model.ModelImpl;
 import ranobe.ru.rura_android.model.data.Project;
-import ranobe.ru.rura_android.view.View;
+import ranobe.ru.rura_android.view.MainView;
 import rx.Observer;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
@@ -12,10 +12,10 @@ import rx.subscriptions.Subscriptions;
 public class ProjectPresenter implements Presenter {
 
   private Model model = new ModelImpl();
-  private View view;
+  private MainView view;
   private Subscription subscription = Subscriptions.empty() ;
 
-  public ProjectPresenter(View view) {
+  public ProjectPresenter(MainView view) {
     this.view = view;
   }
 

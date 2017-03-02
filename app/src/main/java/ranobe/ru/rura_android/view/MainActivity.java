@@ -6,25 +6,23 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
-import butterknife.ButterKnife;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.model.data.Project;
 import ranobe.ru.rura_android.presenter.Presenter;
 import ranobe.ru.rura_android.presenter.ProjectPresenter;
-import ranobe.ru.rura_android.view.adapter.RecyclerViewAdapter;
+import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 
-public class MainActivity extends AppCompatActivity implements View {
+public class MainActivity extends AppCompatActivity implements MainView {
 
   private Presenter presenter;
-  private RecyclerViewAdapter adapter;
+  private MainViewAdapter adapter;
   private static final String TAG = "MainActivity";
 
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_layout);
-    ButterKnife.bind(this);
 
     presenter = new ProjectPresenter(this);
 
@@ -33,12 +31,10 @@ public class MainActivity extends AppCompatActivity implements View {
 
     LinearLayoutManager llm = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(llm);
-    adapter = new RecyclerViewAdapter();
+    adapter = new MainViewAdapter();
     recyclerView.setAdapter(adapter);
 
-    button.setOnClickListener(v -> {
-      presenter.onSearchButtonClick();
-    });
+    button.setOnClickListener(v -> presenter.onSearchButtonClick());
   }
 
   @Override public void showData(List<Project> projects) {

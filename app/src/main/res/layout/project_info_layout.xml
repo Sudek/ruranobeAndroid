@@ -13,19 +13,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitStart"
-        android:src="@drawable/ddmmd_v01_a"
+        android:src="@drawable/ddmmd_v01_a_240px"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         />
     <TextView
+        android:id="@+id/info_title_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        android:layout_gravity="left|bottom"
+        android:text="Title name"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/cover"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="513dp"
+        />
+    <TextView
+        android:id="@+id/info_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/info_title_name"
+        />
+    <TextView
+        android:id="@+id/info_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/info_author"
+        />
+    <TextView
+        android:id="@+id/info_translation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Translation status"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/info_status"
         />
   </RelativeLayout>
 </ScrollView>

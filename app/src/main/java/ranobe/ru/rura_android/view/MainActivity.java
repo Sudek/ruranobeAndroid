@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.model.data.Project;
@@ -27,14 +26,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
     presenter = new ProjectPresenter(this);
 
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-    Button button = (Button) findViewById(R.id.button);
 
     LinearLayoutManager llm = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(llm);
     adapter = new MainViewAdapter();
     recyclerView.setAdapter(adapter);
 
-    button.setOnClickListener(v -> presenter.onSearchButtonClick());
+    presenter.onSearchButtonClick();
   }
 
   @Override public void showData(List<Project> projects) {

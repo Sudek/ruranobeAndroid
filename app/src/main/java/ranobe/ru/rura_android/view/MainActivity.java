@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     presenter = new ProjectPresenter(this);
 
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+    recyclerView.setHasFixedSize(true);
 
     LinearLayoutManager llm = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(llm);

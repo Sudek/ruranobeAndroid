@@ -25,14 +25,13 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   }
   @Override public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
     View v = LayoutInflater.from(viewGroup.getContext())
-        .inflate(R.layout.project_list_layout, viewGroup, false);
+        .inflate(R.layout.main_card_view, viewGroup, false);
     return new ViewHolder(v);
   }
 
   @Override public void onBindViewHolder(MainViewAdapter.ViewHolder holder, int position) {
     Project project = projects.get(position);
     holder.name.setText(project.getTitle());
-    //holder.author.setText("Фуджино Омори");
     holder.itemView.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), ProjectActivity.class));
       Log.d(TAG, "onclick " + position);

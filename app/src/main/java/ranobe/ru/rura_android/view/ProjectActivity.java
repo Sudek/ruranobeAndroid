@@ -15,7 +15,7 @@ public class ProjectActivity extends AppCompatActivity implements ProjectView {
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.project_layout);
+    setContentView(R.layout.main_tab_layout);
 
     viewPager = (ViewPager) findViewById(R.id.viewpager);
     setupViewPager(viewPager);

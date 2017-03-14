@@ -23,6 +23,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
     this.projects = projects;
     notifyDataSetChanged();
   }
+
   @Override public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
     View v = LayoutInflater.from(viewGroup.getContext())
         .inflate(R.layout.main_card_view, viewGroup, false);
@@ -43,7 +44,6 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {
-
     private TextView name;
     private TextView author;
 

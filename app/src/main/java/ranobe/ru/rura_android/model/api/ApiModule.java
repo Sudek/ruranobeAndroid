@@ -25,7 +25,7 @@ public class ApiModule {
 
 
     Retrofit.Builder builder = new Retrofit.Builder().
-        baseUrl("http://ruranobe.ru/api/")
+        baseUrl("http://10.0.3.2:8080/api/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
 

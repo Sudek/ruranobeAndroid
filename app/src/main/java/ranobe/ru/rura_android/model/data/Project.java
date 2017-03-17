@@ -6,87 +6,33 @@ import java.util.Date;
 
 public class Project {
 
-  @SerializedName("projectId")
-  @Expose
-  private Integer projectId;
-  @SerializedName("imageId")
-  @Expose
-  private Integer imageId;
-  @SerializedName("url")
-  @Expose
-  private String url;
-  @SerializedName("title")
-  @Expose
-  private String title;
-  @SerializedName("nameJp")
-  @Expose
-  private String nameJp;
-  @SerializedName("nameEn")
-  @Expose
-  private String nameEn;
-  @SerializedName("nameRu")
-  @Expose
-  private String nameRu;
-  @SerializedName("nameRomaji")
-  @Expose
-  private String nameRomaji;
-  @SerializedName("author")
-  @Expose
-  private String author;
-  @SerializedName("illustrator")
-  @Expose
-  private String illustrator;
-  @SerializedName("originalDesign")
-  @Expose
-  private String originalDesign;
-  @SerializedName("originalStory")
-  @Expose
-  private String originalStory;
-  @SerializedName("orderNumber")
-  @Expose
-  private Integer orderNumber;
-  @SerializedName("onevolume")
-  @Expose
-  private Boolean onevolume;
-  @SerializedName("franchiseNovel")
-  @Expose
-  private String franchiseNovel;
-  @SerializedName("franchiseSpinOff")
-  @Expose
-  private String franchiseSpinOff;
-  @SerializedName("franchiseSS")
-  @Expose
-  private String franchiseSS;
-  @SerializedName("franchiseManga")
-  @Expose
-  private String franchiseManga;
-  @SerializedName("franchiseAnime")
-  @Expose
-  private String franchiseAnime;
-  @SerializedName("franchiseWeb")
-  @Expose
-  private String franchiseWeb;
-  @SerializedName("annotation")
-  @Expose
-  private String annotation;
-  @SerializedName("forumId")
-  @Expose
-  private Integer forumId;
-  @SerializedName("status")
-  @Expose
-  private String status;
-  @SerializedName("issueStatus")
-  @Expose
-  private String issueStatus;
-  @SerializedName("translationStatus")
-  @Expose
-  private String translationStatus;
-  @SerializedName("lastUpdateDate")
-  @Expose
-  private Date lastUpdateDate;
-  @SerializedName("lastEditDate")
-  @Expose
-  private Date lastEditDate;
+  @SerializedName("projectId") @Expose private Integer projectId;
+  @SerializedName("imageId") @Expose private Integer imageId;
+  @SerializedName("url") @Expose private String url;
+  @SerializedName("title") @Expose private String title;
+  @SerializedName("nameJp") @Expose private String nameJp;
+  @SerializedName("nameEn") @Expose private String nameEn;
+  @SerializedName("nameRu") @Expose private String nameRu;
+  @SerializedName("nameRomaji") @Expose private String nameRomaji;
+  @SerializedName("author") @Expose private String author;
+  @SerializedName("illustrator") @Expose private String illustrator;
+  @SerializedName("originalDesign") @Expose private String originalDesign;
+  @SerializedName("originalStory") @Expose private String originalStory;
+  @SerializedName("orderNumber") @Expose private Integer orderNumber;
+  @SerializedName("onevolume") @Expose private Boolean onevolume;
+  @SerializedName("franchiseNovel") @Expose private String franchiseNovel;
+  @SerializedName("franchiseSpinOff") @Expose private String franchiseSpinOff;
+  @SerializedName("franchiseSS") @Expose private String franchiseSS;
+  @SerializedName("franchiseManga") @Expose private String franchiseManga;
+  @SerializedName("franchiseAnime") @Expose private String franchiseAnime;
+  @SerializedName("franchiseWeb") @Expose private String franchiseWeb;
+  @SerializedName("annotation") @Expose private String annotation;
+  @SerializedName("forumId") @Expose private Integer forumId;
+  @SerializedName("status") @Expose private String status;
+  @SerializedName("issueStatus") @Expose private String issueStatus;
+  @SerializedName("translationStatus") @Expose private String translationStatus;
+  @SerializedName("lastUpdateDate") @Expose private Date lastUpdateDate;
+  @SerializedName("lastEditDate") @Expose private Date lastEditDate;
 
   public Integer getProjectId() {
     return projectId;

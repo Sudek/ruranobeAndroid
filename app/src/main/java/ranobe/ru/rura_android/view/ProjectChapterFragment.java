@@ -15,9 +15,9 @@ public class ProjectChapterFragment extends Fragment {
 
   private static final String TAG = "RecyclerViewFragment";
 
-  protected RecyclerView recyclerView;
-  protected ProjectChapterAdapter adapter;
-  protected RecyclerView.LayoutManager layoutManager;
+  private RecyclerView recyclerView;
+  private ProjectChapterAdapter adapter;
+  private RecyclerView.LayoutManager layoutManager;
 
   public ProjectChapterFragment() {
     // Required empty public constructor

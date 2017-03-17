@@ -33,6 +33,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   @Override public void onBindViewHolder(MainViewAdapter.ViewHolder holder, int position) {
     Project project = projects.get(position);
     holder.name.setText(project.getTitle());
+    holder.author.setText(project.getAuthor());
     holder.itemView.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), ProjectActivity.class));
       Log.d(TAG, "onclick " + position);
@@ -50,7 +51,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
     public ViewHolder(View itemView) {
       super(itemView);
       name = (TextView) itemView.findViewById(R.id.projectName);
-      //author = (TextView) itemView.findViewById(R.id.authorName);
+      author = (TextView) itemView.findViewById(R.id.authorName);
     }
   }
 }

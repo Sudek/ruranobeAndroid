@@ -1,6 +1,7 @@
 package ranobe.ru.rura_android.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     public ViewHolder(View v) {
       super(v);
       volumeName = (TextView) v.findViewById(R.id.info_title_name);
-      //v.setOnClickListener(v1 -> Log.d(TAG, "Element " + getAdapterPosition() + " clicked."));
+      v.setOnClickListener(v1 -> Log.d(TAG, "Element " + getAdapterPosition() + " clicked."));
     }
   }
 }

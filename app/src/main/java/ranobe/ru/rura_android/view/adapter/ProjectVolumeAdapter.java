@@ -1,7 +1,6 @@
 package ranobe.ru.rura_android.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +10,14 @@ import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.model.data.Volume;
 
-public class ProjectChapterAdapter extends RecyclerView.Adapter<ProjectChapterAdapter.ViewHolder> {
+public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder> {
 
-  private static final String TAG = "CustomAdapter";
+  private static final String TAG = "ProjectVolumeAdapter";
   private List<Volume> volumes = new ArrayList<>();
 
-  public ProjectChapterAdapter(List<Volume> volumes) {
-    Volume test = new Volume();
-    test.setNameTitle("Неужели искать встречи в подземелье − неправильно? 1");
-    volumes.add(0, test);
-    Volume test1 = new Volume();
-    test1.setNameTitle("Волчица и пряности 9: Город противостояния. Книга 2 из 2");
-    volumes.add(1, test1);
+  public void setVolumes(List<Volume> volumes) {
+    this.volumes = volumes;
+    notifyDataSetChanged();
   }
 
   @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,11 +33,10 @@ public class ProjectChapterAdapter extends RecyclerView.Adapter<ProjectChapterAd
   }
 
   @Override public int getItemCount() {
-    Log.d("Peka", String.valueOf(volumes.size()));
     return volumes.size();
   }
 
-  public static class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder {
 
     private TextView volumeName;
 

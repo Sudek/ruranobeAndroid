@@ -10,5 +10,4 @@ public interface MainView {
   void showError(String error);
 
   void showEmptyList();
-
 }

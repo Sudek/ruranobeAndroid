@@ -2,7 +2,6 @@ package ranobe.ru.rura_android.view.adapter;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,6 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
     holder.author.setText(project.getAuthor());
     holder.itemView.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), ProjectActivity.class));
-      Log.d(TAG, "onclick " + position);
     });
   }
 

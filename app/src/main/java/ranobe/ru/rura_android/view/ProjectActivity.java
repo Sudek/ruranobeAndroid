@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.view.adapter.ProjectPagerAdapter;
 //https://toster.ru/q/225663
-public class ProjectActivity extends AppCompatActivity implements ProjectView {
+public class ProjectActivity extends AppCompatActivity {
 
   private TabLayout tabLayout;
   private ViewPager viewPager;
@@ -27,7 +27,7 @@ public class ProjectActivity extends AppCompatActivity implements ProjectView {
   private void setupViewPager(ViewPager viewPager) {
     ProjectPagerAdapter adapter = new ProjectPagerAdapter(getSupportFragmentManager());
     adapter.addFragment(new ProjectInfoFragment(), "INFO");
-    adapter.addFragment(new ProjectChapterFragment(), "CHAPTERS");
+    adapter.addFragment(new ProjectVolumeFragment(), "VOLUMES");
     viewPager.setAdapter(adapter);
   }
 }

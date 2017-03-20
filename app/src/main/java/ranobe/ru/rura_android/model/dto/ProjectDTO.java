@@ -1,10 +1,10 @@
-package ranobe.ru.rura_android.model.data;
+package ranobe.ru.rura_android.model.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
-public class Project {
+public class ProjectDTO {
 
   @SerializedName("projectId") @Expose private Integer projectId;
   @SerializedName("imageId") @Expose private Integer imageId;

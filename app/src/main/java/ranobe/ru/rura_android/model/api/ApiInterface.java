@@ -1,15 +1,21 @@
 package ranobe.ru.rura_android.model.api;
 
 import java.util.List;
-import ranobe.ru.rura_android.model.data.Image;
-import ranobe.ru.rura_android.model.data.Project;
+import ranobe.ru.rura_android.model.dto.ChapterDTO;
+import ranobe.ru.rura_android.model.dto.ImageDTO;
+import ranobe.ru.rura_android.model.dto.ProjectDTO;
+import ranobe.ru.rura_android.model.dto.VolumeDTO;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import rx.Observable;
 
 public interface ApiInterface {
 
-  @GET("projects") Observable<List<Project>> getProjects();
+  @GET("projects") Observable<List<ProjectDTO>> getProjects();
 
-  @GET("images/{imageId}") Observable<Image> getImage(@Path("imageId") Integer imageId);
+  @GET("projects/{projectId}") Observable<List<VolumeDTO>> getVolumes();
+
+  @GET("volumes/{volumeId}/chapters") Observable<List<ChapterDTO>> getChapters();
+
+  @GET("images/{imageId}") Observable<ImageDTO> getImage(@Path("imageId") Integer imageId);
 }

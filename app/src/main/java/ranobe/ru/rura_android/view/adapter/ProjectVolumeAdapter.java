@@ -9,15 +9,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.model.data.Volume;
+import ranobe.ru.rura_android.model.dto.VolumeDTO;
 
 public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder> {
 
   private static final String TAG = "ProjectVolumeAdapter";
-  private List<Volume> volumes = new ArrayList<>();
+  private List<VolumeDTO> volumeDTOs = new ArrayList<>();
 
-  public void setVolumes(List<Volume> volumes) {
-    this.volumes = volumes;
+  public void setVolumeDTOs(List<VolumeDTO> volumeDTOs) {
+    this.volumeDTOs = volumeDTOs;
     notifyDataSetChanged();
   }
 
@@ -29,19 +29,19 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
   }
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
-    Volume volume = volumes.get(position);
-    holder.volumeName.setText(volume.getNameTitle());
+    VolumeDTO volumeDTO = volumeDTOs.get(position);
+    holder.volumeName.setText(volumeDTO.getNameTitle());
   }
 
   @Override public int getItemCount() {
-    return volumes.size();
+    return volumeDTOs.size();
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {
 
     private TextView volumeName;
 
-    public ViewHolder(View v) {
+    ViewHolder(View v) {
       super(v);
       volumeName = (TextView) v.findViewById(R.id.info_title_name);
       v.setOnClickListener(v1 -> Log.d(TAG, "Element " + getAdapterPosition() + " clicked."));

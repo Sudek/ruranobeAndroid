@@ -1,9 +1,9 @@
-package ranobe.ru.rura_android.model.data;
+package ranobe.ru.rura_android.model.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Image {
+public class ImageDTO {
   @SerializedName("resourceId") @Expose private Integer resourceId;
   @SerializedName("userId") @Expose private Integer userId;
   @SerializedName("historyId") @Expose private Integer historyId;

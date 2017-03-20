@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.model.data.Volume;
+import ranobe.ru.rura_android.model.dto.VolumeDTO;
 import ranobe.ru.rura_android.presenter.ProjectVolumeImplPresenter;
 import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 
@@ -49,21 +49,21 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
     recyclerView.setAdapter(adapter);
 
     //pvip.getVolumesForScreen();
-    List<Volume> asd = new ArrayList<>();
+    List<VolumeDTO> asd = new ArrayList<>();
     showVolumes(asd);
 
     return view;
   }
 
-  @Override public void showVolumes(List<Volume> volumes) {
-    Volume test = new Volume();
+  @Override public void showVolumes(List<VolumeDTO> volumeDTOs) {
+    VolumeDTO test = new VolumeDTO();
     test.setNameTitle("Неужели искать встречи в подземелье − неправильно? 1");
-    volumes.add(0, test);
-    Log.d(TAG, String.valueOf(volumes.get(0)));
-    Volume test1 = new Volume();
+    volumeDTOs.add(0, test);
+    Log.d(TAG, String.valueOf(volumeDTOs.get(0)));
+    VolumeDTO test1 = new VolumeDTO();
     test1.setNameTitle("Волчица и пряности 9: Город противостояния. Книга 2 из 2");
-    volumes.add(1, test1);
-    Log.d(TAG, String.valueOf(volumes.get(1)));
-    adapter.setVolumes(volumes);
+    volumeDTOs.add(1, test1);
+    Log.d(TAG, String.valueOf(volumeDTOs.get(1)));
+    adapter.setVolumeDTOs(volumeDTOs);
   }
 }

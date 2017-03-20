@@ -1,10 +1,10 @@
-package ranobe.ru.rura_android.model.data;
+package ranobe.ru.rura_android.model.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
-public class Volume {
+public class VolumeDTO {
   @SerializedName("volumeId") @Expose private Integer volumeId;
   @SerializedName("projectId") @Expose private Integer projectId;
   @SerializedName("imageOne") @Expose private Integer imageOne;

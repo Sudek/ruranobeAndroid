@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:clickable="true"
     >
@@ -9,7 +10,8 @@
   <android.support.v7.widget.CardView
       android:id="@+id/cv"
       android:layout_width="match_parent"
-      android:layout_height="200dp"
+      android:layout_height="150dp"
+      card_view:cardUseCompatPadding="true"
       >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +22,6 @@
           android:id="@+id/projectName"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Project"
           android:textSize="18sp"
           android:maxLines="1"
           android:ellipsize="end"
@@ -30,7 +31,6 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@id/projectName"
-          android:text="Фуджино Омори"
           android:textSize="18sp"
           android:maxLines="1"
           android:ellipsize="end"
@@ -40,7 +40,7 @@
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:scaleType="center"
         android:src="@drawable/sidebanner_ddmmd" />
   </android.support.v7.widget.CardView>

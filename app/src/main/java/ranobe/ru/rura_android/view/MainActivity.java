@@ -9,7 +9,7 @@ import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
 import ranobe.ru.rura_android.presenter.Presenter;
-import ranobe.ru.rura_android.presenter.ProjectPresenter;
+import ranobe.ru.rura_android.presenter.PreviewPresenter;
 import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_layout);
 
-    presenter = new ProjectPresenter(this);
+    presenter = new PreviewPresenter(this);
 
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     recyclerView.setHasFixedSize(true);

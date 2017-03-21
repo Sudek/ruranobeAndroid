@@ -4,18 +4,22 @@ import java.util.List;
 import ranobe.ru.rura_android.model.MainModel;
 import ranobe.ru.rura_android.model.MainModelImpl;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
+import ranobe.ru.rura_android.presenter.mappers.PreviewMapper;
 import ranobe.ru.rura_android.view.MainView;
+import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
 
-public class ProjectPresenter implements Presenter {
+public class PreviewPresenter implements Presenter {
 
   private MainModel mainModel = new MainModelImpl();
   private MainView view;
   private Subscription subscription = Subscriptions.empty() ;
+  private PreviewMapper previewMapper = new PreviewMapper();
+  private Observable<List<ProjectDTO>> projectDTOObservable = mainModel.getProjects();
 
-  public ProjectPresenter(MainView view) {
+  public PreviewPresenter(MainView view) {
     this.view = view;
   }
 

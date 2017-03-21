@@ -48,7 +48,6 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
     adapter = new ProjectVolumeAdapter();
     recyclerView.setAdapter(adapter);
 
-    //pvip.getVolumesForScreen();
     List<VolumeDTO> asd = new ArrayList<>();
     showVolumes(asd);
 

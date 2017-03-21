@@ -5,7 +5,7 @@ import ranobe.ru.rura_android.model.dto.ProjectDTO;
 
 public interface MainView {
 
-  void showData(List<ProjectDTO> projectDTOs);
+  void showData(List<ProjectDTO> projects);
 
   void showError(String error);
 

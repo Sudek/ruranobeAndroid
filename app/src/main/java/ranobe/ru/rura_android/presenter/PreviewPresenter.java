@@ -6,7 +6,6 @@ import ranobe.ru.rura_android.model.MainModelImpl;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
 import ranobe.ru.rura_android.presenter.mappers.PreviewMapper;
 import ranobe.ru.rura_android.view.MainView;
-import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
@@ -17,7 +16,6 @@ public class PreviewPresenter implements Presenter {
   private MainView view;
   private Subscription subscription = Subscriptions.empty() ;
   private PreviewMapper previewMapper = new PreviewMapper();
-  private Observable<List<ProjectDTO>> projectDTOObservable = mainModel.getProjects();
 
   public PreviewPresenter(MainView view) {
     this.view = view;

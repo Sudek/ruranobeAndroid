@@ -7,9 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.model.dto.ProjectDTO;
 import ranobe.ru.rura_android.presenter.Presenter;
 import ranobe.ru.rura_android.presenter.PreviewPresenter;
+import ranobe.ru.rura_android.presenter.entities.Preview;
 import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     presenter.onSearchButtonClick();
   }
 
-  @Override public void showData(List<ProjectDTO> projectDTOs) {
-    adapter.setProjectDTOs(projectDTOs);
+  @Override public void showData(List<Preview> previews) {
+    adapter.setProjectDTOs(previews);
   }
 
   @Override public void showError(String error) {

@@ -9,17 +9,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.model.dto.ProjectDTO;
+import ranobe.ru.rura_android.presenter.entities.Preview;
 import ranobe.ru.rura_android.view.ProjectActivity;
 
 public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHolder> {
 
-  private List<ProjectDTO> projectDTOs = new ArrayList<>();
+  private List<Preview> previews = new ArrayList<>();
   private static final String TAG = "RecyclerViewAdapter";
 
 
-  public void setProjectDTOs(List<ProjectDTO> projectDTOs) {
-    this.projectDTOs = projectDTOs;
+  public void setProjectDTOs(List<Preview> previews) {
+    this.previews = previews;
     notifyDataSetChanged();
   }
 
@@ -30,14 +30,14 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   }
 
   @Override public void onBindViewHolder(MainViewAdapter.ViewHolder holder, int position) {
-    ProjectDTO projectDTO = projectDTOs.get(position);
-    holder.name.setText(projectDTO.getTitle());
-    holder.author.setText(projectDTO.getAuthor());
+    Preview preview = previews.get(position);
+    holder.name.setText(preview.getProjectName());
+    holder.author.setText(preview.getAuthor());
     holder.itemView.setOnClickListener(view -> view.getContext().startActivity(new Intent(view.getContext(), ProjectActivity.class)));
   }
 
   @Override public int getItemCount() {
-    return projectDTOs.size();
+    return previews.size();
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {

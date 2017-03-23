@@ -1,8 +1,6 @@
 package ranobe.ru.rura_android.presenter;
 
 import java.util.List;
-import ranobe.ru.rura_android.model.MainModel;
-import ranobe.ru.rura_android.model.MainModelImpl;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
 import ranobe.ru.rura_android.presenter.mappers.PreviewMapper;
 import ranobe.ru.rura_android.view.MainView;
@@ -12,7 +10,6 @@ import rx.subscriptions.Subscriptions;
 
 public class PreviewPresenter implements Presenter {
 
-  private MainModel mainModel = new MainModelImpl();
   private MainView view;
   private Subscription subscription = Subscriptions.empty() ;
   private PreviewMapper previewMapper = new PreviewMapper();
@@ -27,7 +24,7 @@ public class PreviewPresenter implements Presenter {
       subscription.unsubscribe();
     }
 
-    subscription = mainModel.getProjects()
+    subscription = previewMapper.previews()
         .subscribe(new Observer<List<ProjectDTO>>() {
           @Override
           public void onCompleted() {

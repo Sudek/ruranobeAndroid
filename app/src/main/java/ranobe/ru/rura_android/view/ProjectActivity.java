@@ -7,20 +7,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.view.adapter.ProjectPagerAdapter;
-//https://toster.ru/q/225663
-public class ProjectActivity extends AppCompatActivity {
+import ranobe.ru.rura_android.view.fragment.ProjectInfoFragment;
+import ranobe.ru.rura_android.view.fragment.ProjectVolumeFragment;
 
-  private TabLayout tabLayout;
-  private ViewPager viewPager;
+public class ProjectActivity extends AppCompatActivity {
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_tab_layout);
 
-    viewPager = (ViewPager) findViewById(R.id.viewpager);
+    ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
     setupViewPager(viewPager);
 
-    tabLayout = (TabLayout) findViewById(R.id.tabs);
+    TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
     tabLayout.setupWithViewPager(viewPager);
   }
 

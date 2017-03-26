@@ -19,7 +19,7 @@ public class PreviewPresenter implements Presenter {
   }
 
 
-  @Override public void onSearchButtonClick() {
+  @Override public void showPreviews() {
     if (!subscription.isUnsubscribed()) {
       subscription.unsubscribe();
     }

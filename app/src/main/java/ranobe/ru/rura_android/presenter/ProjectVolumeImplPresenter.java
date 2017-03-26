@@ -3,7 +3,7 @@ package ranobe.ru.rura_android.presenter;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.model.dto.VolumeDTO;
-import ranobe.ru.rura_android.view.ProjectVolumeView;
+import ranobe.ru.rura_android.view.fragment.ProjectVolumeView;
 
 public class ProjectVolumeImplPresenter implements ProjectVolumePresenter {
 

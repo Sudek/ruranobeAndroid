@@ -34,9 +34,12 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
     Preview preview = previews.get(position);
     holder.name.setText(preview.getProjectName());
     holder.author.setText(preview.getAuthor());
-    Picasso.with(holder.banner.getContext()).load("http:" + preview.getUrlBanner()).resize(400, 125)
+    Picasso.with(holder.banner.getContext())
+        .load("http:" + preview.getUrlBanner())
+        .resize(425, 125)
         .into(holder.banner);
-    holder.itemView.setOnClickListener(view -> view.getContext().startActivity(new Intent(view.getContext(), ProjectActivity.class)));
+    holder.itemView.setOnClickListener(view -> view.getContext()
+        .startActivity(new Intent(view.getContext(), ProjectActivity.class)));
   }
 
   @Override public int getItemCount() {

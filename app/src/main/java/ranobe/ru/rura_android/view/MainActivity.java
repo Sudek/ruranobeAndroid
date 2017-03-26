@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     adapter = new MainViewAdapter();
     recyclerView.setAdapter(adapter);
 
-    presenter.onSearchButtonClick();
+    presenter.showPreviews();
   }
 
   @Override public void showData(List<Preview> previews) {

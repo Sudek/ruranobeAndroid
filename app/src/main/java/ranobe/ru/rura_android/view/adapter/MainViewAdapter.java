@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.view.adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +18,7 @@ import ranobe.ru.rura_android.view.ProjectActivity;
 public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHolder> {
 
   private List<Preview> previews = new ArrayList<>();
-  private static final String TAG = "RecyclerViewAdapter";
+  private Context context;
 
   public void setProjectDTOs(List<Preview> previews) {
     this.previews = previews;
@@ -27,10 +28,13 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   @Override public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
     View v = LayoutInflater.from(viewGroup.getContext())
         .inflate(R.layout.main_card_view, viewGroup, false);
+    context = viewGroup.getContext();
     return new ViewHolder(v);
   }
 
   @Override public void onBindViewHolder(MainViewAdapter.ViewHolder holder, int position) {
+    Intent intent = new Intent(context, ProjectActivity.class);
+    intent.putExtra("POSITION", position);
     Preview preview = previews.get(position);
     holder.name.setText(preview.getProjectName());
     holder.author.setText(preview.getAuthor());
@@ -38,8 +42,8 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
         .load("http:" + preview.getUrlBanner())
         .resize(425, 125)
         .into(holder.banner);
-    holder.itemView.setOnClickListener(view -> view.getContext()
-        .startActivity(new Intent(view.getContext(), ProjectActivity.class)));
+    holder.itemView.setOnClickListener(view -> context
+        .startActivity(intent));
   }
 
   @Override public int getItemCount() {

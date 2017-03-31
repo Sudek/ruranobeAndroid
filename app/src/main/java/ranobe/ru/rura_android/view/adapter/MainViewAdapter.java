@@ -33,8 +33,6 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   }
 
   @Override public void onBindViewHolder(MainViewAdapter.ViewHolder holder, int position) {
-    Intent intent = new Intent(context, ProjectActivity.class);
-    intent.putExtra("POSITION", position);
     Preview preview = previews.get(position);
     holder.name.setText(preview.getProjectName());
     holder.author.setText(preview.getAuthor());
@@ -42,6 +40,12 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
         .load("http:" + preview.getUrlBanner())
         .resize(425, 125)
         .into(holder.banner);
+
+    Intent intent = new Intent(context, ProjectActivity.class);
+    intent.putExtra("POSITION", position);
+    intent.putExtra("NAME", preview.getProjectName());
+    intent.putExtra("AUTHOR", preview.getAuthor());
+
     holder.itemView.setOnClickListener(view -> context
         .startActivity(intent));
   }

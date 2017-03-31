@@ -13,9 +13,9 @@ public interface ApiInterface {
 
   @GET("projects") Observable<List<ProjectDTO>> getProjects();
 
-  @GET("projects/{projectId}") Observable<List<VolumeDTO>> getVolumes();
+  @GET("projects/{projectId}/volumes") Observable<List<VolumeDTO>> getVolumes(@Path("projectId") int projectId);
 
   @GET("volumes/{volumeId}/chapters") Observable<List<ChapterDTO>> getChapters();
 
-  @GET("images/{imageId}") Observable<ImageDTO> getImage(@Path("imageId") Integer imageId);
+  @GET("images/{imageId}") Observable<ImageDTO> getImage(@Path("imageId") int imageId);
 }

@@ -10,9 +10,11 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.presenter.entities.Project;
+import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
+import ranobe.ru.rura_android.presenter.ProjectInfoPresenterImp;
+import ranobe.ru.rura_android.view.ProjectActivity;
 
-public class ProjectInfoFragment extends Fragment {
+public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
 
   @Bind(R.id.cover) ImageView cover;
   @Bind(R.id.info_title_name) TextView title;
@@ -21,7 +23,8 @@ public class ProjectInfoFragment extends Fragment {
   @Bind(R.id.info_translation) TextView translationStatus;
   @Bind(R.id.info_about_project) TextView description;
 
-  private Project project;
+  private ProjectInfoPresenter infoPresenter;
+
 
   public ProjectInfoFragment() {
   }
@@ -35,10 +38,16 @@ public class ProjectInfoFragment extends Fragment {
     View view = inflater.inflate(R.layout.project_info_layout, container, false);
     ButterKnife.bind(this, view);
 
-    //ProjectActivity activity = (ProjectActivity) getActivity();
-    //project = activity.getProject();
+    ProjectActivity activity = (ProjectActivity) getActivity();
+    title.setText(activity.getName());
+    author.setText(activity.getAuthor());
+
+    infoPresenter = new ProjectInfoPresenterImp(this, activity.getProjectId());
 
     return view;
   }
 
+  @Override public void showProject(int projectId) {
+
+  }
 }

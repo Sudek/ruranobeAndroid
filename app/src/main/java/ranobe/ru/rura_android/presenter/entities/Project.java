@@ -3,6 +3,7 @@ package ranobe.ru.rura_android.presenter.entities;
 import java.io.Serializable;
 
 public class Project implements Serializable {
+  private int projectId;
   private String name;
   private String author;
   private String status;
@@ -10,13 +11,22 @@ public class Project implements Serializable {
   private String description;
   private String ulrCover;
 
-  public Project(String name, String author, String status, String translationStatus,
+  public Project(int projectId, String name, String author, String status, String translationStatus,
       String description) {
+    this.projectId = projectId;
     this.name = name;
     this.author = author;
     this.status = status;
     this.translationStatus = translationStatus;
     this.description = description;
+  }
+
+  public int getId() {
+    return projectId;
+  }
+
+  public void setId(int projectId) {
+    this.projectId = projectId;
   }
 
   public String getName() {

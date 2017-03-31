@@ -13,20 +13,19 @@ public class PreviewMapper {
 
   //http://stackoverflow.com/questions/40421471/concat-multiple-calls-with-retrofit-2-and-rxjava
   public Observable<List<Preview>> previews() {
-    return mainModel.getProjects().flatMap(new Func1<List<ProjectDTO>, Observable<ProjectDTO>>() {
-      @Override public Observable<ProjectDTO> call(List<ProjectDTO> projects) {
-        return Observable.from(projects);
-      }
-    }).flatMap(new Func1<ProjectDTO, Observable<Preview>>() {
-      @Override public Observable<Preview> call(ProjectDTO projectDTO) {
-        if (projectDTO.getImageId() == null) {
-          projectDTO.setImageId(11208); //if imageId is null, zip don't work
-        }
-        return Observable.zip(Observable.just(projectDTO),
-            mainModel.getImage(projectDTO.getImageId()),
-            (projectDTO1, imageDTO) -> new Preview(projectDTO1.getTitle(), projectDTO1.getAuthor(),
-                imageDTO.getUrl()));
-      }
-    }).toList();
+    return mainModel.getProjects()
+        .flatMap(Observable::from)
+        .flatMap(new Func1<ProjectDTO, Observable<Preview>>() {
+          @Override public Observable<Preview> call(ProjectDTO projectDTO) {
+            if (projectDTO.getImageId() == null) {
+              projectDTO.setImageId(11208); //if imageId is null, zip don't work
+            }
+            return Observable.zip(Observable.just(projectDTO),
+                mainModel.getImage(projectDTO.getImageId()),
+                (projectDTO1, imageDTO) -> new Preview(projectDTO1.getProjectId(),
+                    projectDTO1.getTitle(), projectDTO1.getAuthor(), imageDTO.getUrl()));
+          }
+        })
+        .toList();
   }
 }

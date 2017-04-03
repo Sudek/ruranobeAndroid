@@ -12,9 +12,9 @@ import ranobe.ru.rura_android.view.fragment.ProjectVolumeFragment;
 
 public class ProjectActivity extends AppCompatActivity {
 
+  private final static String PROJECT_ID = "PROJECT_ID";
   private int projectId;
-  private String name;
-  private String author;
+
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,9 +27,7 @@ public class ProjectActivity extends AppCompatActivity {
     tabLayout.setupWithViewPager(viewPager);
 
     Bundle bundle = getIntent().getExtras();
-    projectId = bundle.getInt("POSITION");
-    name = bundle.getString("NAME");
-    author = bundle.getString("AUTHOR");
+    projectId = bundle.getInt(PROJECT_ID);
   }
 
   private void setupViewPager(ViewPager viewPager) {
@@ -37,14 +35,6 @@ public class ProjectActivity extends AppCompatActivity {
     adapter.addFragment(new ProjectInfoFragment(), "ОПИСАНИЕ");
     adapter.addFragment(new ProjectVolumeFragment(), "ТОМА");
     viewPager.setAdapter(adapter);
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getAuthor() {
-    return author;
   }
 
   public int getProjectId() {

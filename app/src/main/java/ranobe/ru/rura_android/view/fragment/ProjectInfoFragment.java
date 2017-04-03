@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenterImp;
+import ranobe.ru.rura_android.presenter.entities.Project;
 import ranobe.ru.rura_android.view.ProjectActivity;
 
 public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
@@ -22,9 +23,6 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
   @Bind(R.id.info_status) TextView status;
   @Bind(R.id.info_translation) TextView translationStatus;
   @Bind(R.id.info_about_project) TextView description;
-
-  private ProjectInfoPresenter infoPresenter;
-
 
   public ProjectInfoFragment() {
   }
@@ -39,15 +37,18 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
     ButterKnife.bind(this, view);
 
     ProjectActivity activity = (ProjectActivity) getActivity();
-    title.setText(activity.getName());
-    author.setText(activity.getAuthor());
 
-    infoPresenter = new ProjectInfoPresenterImp(this, activity.getProjectId());
+    ProjectInfoPresenter infoPresenter = new ProjectInfoPresenterImp(this);
+    infoPresenter.showProjectInfo(activity.getProjectId());
 
     return view;
   }
 
-  @Override public void showProject(int projectId) {
-
+  @Override public void showProject(Project project) {
+    title.setText(project.getName());
+    author.setText(project.getAuthor());
+    status.setText(project.getStatus());
+    translationStatus.setText("Перевод " + project.getTranslationStatus());
+    description.setText(project.getDescription());
   }
 }

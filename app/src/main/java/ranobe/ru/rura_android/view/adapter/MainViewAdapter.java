@@ -42,9 +42,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
         .into(holder.banner);
 
     Intent intent = new Intent(context, ProjectActivity.class);
-    intent.putExtra("POSITION", position);
-    intent.putExtra("NAME", preview.getProjectName());
-    intent.putExtra("AUTHOR", preview.getAuthor());
+    intent.putExtra("PROJECT_ID", preview.getId());
 
     holder.itemView.setOnClickListener(view -> context
         .startActivity(intent));

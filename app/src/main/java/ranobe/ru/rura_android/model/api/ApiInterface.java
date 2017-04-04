@@ -13,6 +13,8 @@ public interface ApiInterface {
 
   @GET("projects") Observable<List<ProjectDTO>> getProjects();
 
+  @GET("projects/{projectId}") Observable<ProjectDTO> getProject(@Path("projectId") int ProjectId);
+
   @GET("projects/{projectId}/volumes") Observable<List<VolumeDTO>> getVolumes(@Path("projectId") int projectId);
 
   @GET("volumes/{volumeId}/chapters") Observable<List<ChapterDTO>> getChapters();

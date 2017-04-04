@@ -11,6 +11,8 @@ public interface MainModel {
 
   Observable<List<ProjectDTO>> getProjects();
 
+  Observable<ProjectDTO> getProject(int projectId);
+
   Observable<List<VolumeDTO>> getVolumes(int projectId);
 
   Observable<List<ChapterDTO>> getChapters(int volumeId);

@@ -1,6 +1,5 @@
 package ranobe.ru.rura_android.presenter;
 
-import java.util.List;
 import ranobe.ru.rura_android.presenter.entities.Project;
 import ranobe.ru.rura_android.presenter.mappers.ProjectMapper;
 import ranobe.ru.rura_android.view.fragment.ProjectInfoView;
@@ -23,7 +22,9 @@ public class ProjectInfoPresenterImp implements ProjectInfoPresenter {
       subscription.unsubscribe();
     }
 
-    subscription = mapper.projects().subscribe(new Observer<List<Project>>() {
+    subscription = mapper.projects(projectId)
+        .subscribe(new Observer<Project>() {
+
       @Override public void onCompleted() {
 
       }
@@ -32,14 +33,8 @@ public class ProjectInfoPresenterImp implements ProjectInfoPresenter {
 
       }
 
-      @Override public void onNext(List<Project> projects) {
-        if (projects != null && !projects.isEmpty()) {
-          for (int x = 0; x <= projects.size(); x++) {
-            if (projects.get(x).getId() == projectId) {
-              projectView.showProject(projects.get(x));
-            }
-          }
-        }
+      @Override public void onNext(Project project) {
+        projectView.showProject(project);
       }
     });
   }

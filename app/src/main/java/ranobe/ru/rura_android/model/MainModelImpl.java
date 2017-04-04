@@ -21,6 +21,12 @@ public class MainModelImpl implements MainModel {
         .observeOn(AndroidSchedulers.mainThread());
   }
 
+  @Override public Observable<ProjectDTO> getProject(int projectId) {
+    return apiInterface.getProject(projectId)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread());
+  }
+
   @Override public Observable<List<VolumeDTO>> getVolumes(int projectId) {
     return apiInterface.getVolumes(projectId)
         .subscribeOn(Schedulers.io())

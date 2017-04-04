@@ -24,7 +24,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/cover"
         android:text="Title name"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold"
         />
@@ -32,31 +32,31 @@
         android:id="@+id/info_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/info_title_name"
         android:text="Author"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_below="@+id/info_title_name"
         />
     <TextView
         android:id="@+id/info_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/info_author"
         android:text="Status"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_below="@+id/info_author"
         />
     <TextView
         android:id="@+id/info_translation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/info_status"
         android:text="Translation status"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_below="@+id/info_status"
         />
     <TextView
         android:id="@+id/info_about_project"

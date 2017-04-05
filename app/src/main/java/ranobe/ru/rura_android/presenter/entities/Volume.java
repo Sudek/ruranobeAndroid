@@ -6,16 +6,18 @@ public class Volume implements Serializable {
 
   private int projectId;
   private int volumeId;
-  private int index;
+  private float index;
   private String name;
   private int coverId;
+  private String volumeType;
 
-  public Volume(int projectId, int volumeId, int index, String name, int coverId) {
+  public Volume(int projectId, int volumeId, float index, String name, int coverId, String volumeType) {
     this.projectId = projectId;
     this.volumeId = volumeId;
     this.index = index;
     this.name = name;
     this.coverId = coverId;
+    this.volumeType = volumeType;
   }
 
   public int getProjectId() {
@@ -34,11 +36,11 @@ public class Volume implements Serializable {
     this.volumeId = volumeId;
   }
 
-  public int getIndex() {
+  public float getIndex() {
     return index;
   }
 
-  public void setIndex(int index) {
+  public void setIndex(float index) {
     this.index = index;
   }
 
@@ -56,5 +58,13 @@ public class Volume implements Serializable {
 
   public void setCoverId(int coverId) {
     this.coverId = coverId;
+  }
+
+  public String getVolumeType() {
+    return volumeType;
+  }
+
+  public void setVolumeType(String volumeType) {
+    this.volumeType = volumeType;
   }
 }

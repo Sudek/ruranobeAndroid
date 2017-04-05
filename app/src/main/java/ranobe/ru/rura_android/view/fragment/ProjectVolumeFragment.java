@@ -4,14 +4,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.model.dto.VolumeDTO;
+import ranobe.ru.rura_android.presenter.ProjectVolumeImplPresenter;
+import ranobe.ru.rura_android.presenter.ProjectVolumePresenter;
+import ranobe.ru.rura_android.presenter.entities.Volume;
+import ranobe.ru.rura_android.view.ProjectActivity;
 import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 
 public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView {
@@ -43,21 +44,14 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
     adapter = new ProjectVolumeAdapter();
     recyclerView.setAdapter(adapter);
 
-    List<VolumeDTO> asd = new ArrayList<>();
-    showVolumes(asd);
+    ProjectActivity activity = (ProjectActivity) getActivity();
+    ProjectVolumePresenter presenter = new ProjectVolumeImplPresenter(this, activity.getProjectId());
+    presenter.showVolumes();
 
     return view;
   }
 
-  @Override public void showVolumes(List<VolumeDTO> volumeDTOs) {
-    VolumeDTO test = new VolumeDTO();
-    test.setNameTitle("Неужели искать встречи в подземелье − неправильно? 1");
-    volumeDTOs.add(0, test);
-    Log.d(TAG, String.valueOf(volumeDTOs.get(0)));
-    VolumeDTO test1 = new VolumeDTO();
-    test1.setNameTitle("Волчица и пряности 9: Город противостояния. Книга 2 из 2");
-    volumeDTOs.add(1, test1);
-    Log.d(TAG, String.valueOf(volumeDTOs.get(1)));
-    adapter.setVolumeDTOs(volumeDTOs);
+  @Override public void showVolumes(List<Volume> volumes) {
+    adapter.setVolume(volumes);
   }
 }

@@ -12,12 +12,14 @@ public class ProjectInfoPresenterImp implements ProjectInfoPresenter {
   private ProjectInfoView projectView;
   private ProjectMapper mapper = new ProjectMapper();
   private Subscription subscription = Subscriptions.empty();
+  private int projectId;
 
-  public ProjectInfoPresenterImp(ProjectInfoView projectView) {
+  public ProjectInfoPresenterImp(ProjectInfoView projectView, int projectId) {
     this.projectView = projectView;
+    this.projectId = projectId;
   }
 
-  @Override public void showProjectInfo(int projectId) {
+  @Override public void showProjectInfo() {
     if (!subscription.isUnsubscribed()) {
       subscription.unsubscribe();
     }

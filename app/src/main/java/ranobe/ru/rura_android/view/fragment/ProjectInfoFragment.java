@@ -38,8 +38,8 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
 
     ProjectActivity activity = (ProjectActivity) getActivity();
 
-    ProjectInfoPresenter infoPresenter = new ProjectInfoPresenterImp(this);
-    infoPresenter.showProjectInfo(activity.getProjectId());
+    ProjectInfoPresenter infoPresenter = new ProjectInfoPresenterImp(this, activity.getProjectId());
+    infoPresenter.showProjectInfo();
 
     return view;
   }

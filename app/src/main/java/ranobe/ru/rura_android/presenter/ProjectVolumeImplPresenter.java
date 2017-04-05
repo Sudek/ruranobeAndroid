@@ -1,26 +1,51 @@
 package ranobe.ru.rura_android.presenter;
 
-import java.util.ArrayList;
 import java.util.List;
-import ranobe.ru.rura_android.model.dto.VolumeDTO;
+import ranobe.ru.rura_android.presenter.entities.Volume;
+import ranobe.ru.rura_android.presenter.mappers.VolumeMapper;
 import ranobe.ru.rura_android.view.fragment.ProjectVolumeView;
+import rx.Observer;
+import rx.Subscription;
+import rx.subscriptions.Subscriptions;
 
 public class ProjectVolumeImplPresenter implements ProjectVolumePresenter {
 
-  private ProjectVolumeView pvv;
+  private ProjectVolumeView projectVolumeView;
+  private int projectId;
+  private VolumeMapper mapper = new VolumeMapper();
+  private Subscription subscription = Subscriptions.empty();
 
-  public ProjectVolumeImplPresenter(ProjectVolumeView pvv) {
-    this.pvv = pvv;
+  public ProjectVolumeImplPresenter(ProjectVolumeView projectVolumeView, int projectId) {
+    this.projectVolumeView = projectVolumeView;
+    this.projectId = projectId;
   }
 
-  @Override public void getVolumesForScreen() {
-    List<VolumeDTO> volumeDTOs = new ArrayList<>();
-    VolumeDTO test = new VolumeDTO();
-    test.setNameTitle("Неужели искать встречи в подземелье − неправильно? 1");
-    volumeDTOs.add(0, test);
-    VolumeDTO test1 = new VolumeDTO();
-    test1.setNameTitle("Волчица и пряности 9: Город противостояния. Книга 2 из 2");
-    volumeDTOs.add(1, test1);
-    pvv.showVolumes(volumeDTOs);
+  @Override public void showVolumes() {
+    if (!subscription.isUnsubscribed()) {
+      subscription.unsubscribe();
+    }
+
+    subscription = mapper.volumes(projectId)
+        .subscribe(new Observer<List<Volume>>() {
+          @Override public void onCompleted() {
+
+          }
+
+          @Override public void onError(Throwable e) {
+
+          }
+
+          @Override public void onNext(List<Volume> volumes) {
+            if (volumes != null && !volumes.isEmpty()) {
+              projectVolumeView.showVolumes(volumes);
+            }
+          }
+        });
+  }
+
+  @Override public void onStop() {
+    if (!subscription.isUnsubscribed()) {
+      subscription.unsubscribe();
+    }
   }
 }

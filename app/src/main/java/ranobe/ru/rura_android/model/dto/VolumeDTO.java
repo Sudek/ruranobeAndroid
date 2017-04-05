@@ -19,7 +19,7 @@ public class VolumeDTO {
   @SerializedName("nameRu") @Expose private String nameRu;
   @SerializedName("nameRomaji") @Expose private String nameRomaji;
   @SerializedName("nameShort") @Expose private String nameShort;
-  @SerializedName("sequenceNumber") @Expose private Float sequenceNumber;
+  @SerializedName("sequenceNumber") @Expose private int sequenceNumber;
   @SerializedName("author") @Expose private String author;
   @SerializedName("illustrator") @Expose private String illustrator;
   @SerializedName("originalDesign") @Expose private String originalDesign;
@@ -57,7 +57,7 @@ public class VolumeDTO {
     this.nameRomaji = nameRomaji;
   }
 
-  public void setSequenceNumber(Float sequenceNumber) {
+  public void setSequenceNumber(int sequenceNumber) {
     this.sequenceNumber = sequenceNumber;
   }
 
@@ -309,7 +309,7 @@ public class VolumeDTO {
     this.nameShort = nameShort;
   }
 
-  public Float getSequenceNumber() {
+  public int getSequenceNumber() {
     return sequenceNumber;
   }
 

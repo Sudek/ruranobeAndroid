@@ -12,13 +12,14 @@ public class Project implements Serializable {
   private String ulrCover;
 
   public Project(int projectId, String name, String author, String status, String translationStatus,
-      String description) {
+      String description, String ulrCover) {
     this.projectId = projectId;
     this.name = name;
     this.author = author;
     this.status = status;
     this.translationStatus = translationStatus;
     this.description = description;
+    this.ulrCover = ulrCover;
   }
 
   public int getId() {

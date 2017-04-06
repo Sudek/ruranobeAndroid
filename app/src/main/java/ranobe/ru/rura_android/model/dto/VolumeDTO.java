@@ -10,6 +10,8 @@ public class VolumeDTO {
   @SerializedName("nameTitle") @Expose private String nameTitle;
   @SerializedName("sequenceNumber") @Expose private float sequenceNumber;
   @SerializedName("volumeType") @Expose private String volumeType;
+  @SerializedName("volumeStatus") @Expose private String volumeStatus;
+  @SerializedName("nameRu") @Expose private String nameRu;
 
   public Integer getVolumeId() {
     return volumeId;
@@ -57,5 +59,21 @@ public class VolumeDTO {
 
   public void setVolumeType(String volumeType) {
     this.volumeType = volumeType;
+  }
+
+  public String getVolumeStatus() {
+    return volumeStatus;
+  }
+
+  public void setVolumeStatus(String volumeStatus) {
+    this.volumeStatus = volumeStatus;
+  }
+
+  public String getNameRu() {
+    return nameRu;
+  }
+
+  public void setNameRu(String nameRu) {
+    this.nameRu = nameRu;
   }
 }

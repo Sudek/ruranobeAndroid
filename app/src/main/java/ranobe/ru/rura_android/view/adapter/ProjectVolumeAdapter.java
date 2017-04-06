@@ -29,7 +29,7 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
     Volume volume = volumes.get(position);
-    holder.volumeName.setText(volume.getName());
+    holder.volumeName.setText(volume.getNameRu());
   }
 
   @Override public int getItemCount() {

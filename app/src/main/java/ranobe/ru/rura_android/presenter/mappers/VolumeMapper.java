@@ -13,11 +13,12 @@ public class VolumeMapper {
   public Observable<List<Volume>> volumes(int projectId) {
     return mainModel.getVolumes(projectId)
         .flatMap(Observable::from)
-        .filter(volumeDTO -> volumeDTO.getImageOne() != null)
-        .filter(volumeDTO -> Objects.equals(volumeDTO.getVolumeType(), "Ранобэ"))
+        .filter(volumeDTO -> volumeDTO.getImageOne() != null) //delete corrupted values
+        .filter(volumeDTO -> volumeDTO.getNameRu() != null) //delete untranslated values
+        .filter(volumeDTO -> Objects.equals(volumeDTO.getVolumeType(), "Ранобэ")) //Now support only ranobe
         .map(volumeDTO -> new Volume(volumeDTO.getProjectId(), volumeDTO.getVolumeId(),
             volumeDTO.getSequenceNumber(), volumeDTO.getNameTitle(), volumeDTO.getImageOne(),
-            volumeDTO.getVolumeType()))
+            volumeDTO.getVolumeType(), volumeDTO.getVolumeType(), volumeDTO.getNameRu()))
         .toSortedList((volume, volume2) -> Float.compare(volume.getIndex(), volume2.getIndex()));
   }
 }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.squareup.picasso.Picasso;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenterImp;
@@ -50,5 +51,9 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
     status.setText(project.getStatus());
     translationStatus.setText("Перевод " + project.getTranslationStatus());
     description.setText(project.getDescription());
+    Picasso.with(cover.getContext())
+        .load("http:" + project.getUlrCover())
+        .fit()
+        .into(cover);
   }
 }

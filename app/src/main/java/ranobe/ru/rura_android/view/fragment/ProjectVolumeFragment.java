@@ -17,8 +17,6 @@ import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 
 public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView {
 
-  private static final String TAG = "ProjectVolumeFragment";
-
   private ProjectVolumeAdapter adapter;
 
   public ProjectVolumeFragment() {

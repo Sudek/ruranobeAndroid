@@ -11,13 +11,18 @@ import rx.Observable;
 
 public interface ApiInterface {
 
-  @GET("projects") Observable<List<ProjectDTO>> getProjects();
+  @GET("projects")
+  Observable<List<ProjectDTO>> getProjects();
 
-  @GET("projects/{projectId}") Observable<ProjectDTO> getProject(@Path("projectId") int ProjectId);
+  @GET("projects/{projectId}")
+  Observable<ProjectDTO> getProject(@Path("projectId") int ProjectId);
 
-  @GET("projects/{projectId}/volumes") Observable<List<VolumeDTO>> getVolumes(@Path("projectId") int projectId);
+  @GET("projects/{projectId}/volumes")
+  Observable<List<VolumeDTO>> getVolumes(@Path("projectId") int projectId);
 
-  @GET("volumes/{volumeId}/chapters") Observable<List<ChapterDTO>> getChapters();
+  @GET("volumes/{volumeId}/chapters")
+  Observable<List<ChapterDTO>> getChapters(@Path("volumieId") int volumeId);
 
-  @GET("images/{imageId}") Observable<ImageDTO> getImage(@Path("imageId") int imageId);
+  @GET("images/{imageId}")
+  Observable<ImageDTO> getImage(@Path("imageId") int imageId);
 }

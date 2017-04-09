@@ -27,9 +27,3 @@ public class ProjectMapper {
         });
   }
 }
-
-//return mainModel.getProject(projectId)
-//    .filter(projectDTO -> projectDTO.getImageId() != null)
-//    .flatMap(projectDTO -> Observable.zip(Observable.just(projectDTO),
-//        mainModel.getImage(projectDTO.getImageId()),
-//        (projectDTO1, imageDTO) -> new Project(1, "a", "b", "c", "d", "e", imageDTO.getUrl())));

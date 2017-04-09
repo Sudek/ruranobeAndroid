@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitStart"
-        android:src="@drawable/ddmmd_v01_a_240px"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         />
@@ -38,11 +37,17 @@
         android:textSize="18sp"
         android:textStyle="bold"
         />
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/info_author"
+        android:background="@android:color/darker_gray"/>
     <TextView
         android:id="@+id/info_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/info_author"
+        android:layout_below="@+id/line1"
         android:text="Status"
         android:textAlignment="textStart"
         android:textSize="18sp"
@@ -63,15 +68,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/info_translation"
-        android:text="Орарио – это врата в огромный подземный лабиринт, который более известный как «Подземелье». Это странное название вызывает волнение. Место, где можно заработать славу и, возможно, даже завести роман с симпатичной девушкой. Место, где люди задерживают дыхание в надежде получить желаемое. Место, где обычный молодой паренёк повстречал маленькую «Богиню».
-
-— Ладно, Бэлл-кун, следуй за мной! Настало время для обряда посвящения в «Семью»!
-
-— Да! Я стану сильнее!
-
-Судьбоносная встреча паренька, который хочет стать авантюристом, и павшей Богини, у которой ни единого последователя.
-
-Это приключение паренька, записанное Богиней – «История Семьи» (Миф Семьи)"
         android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold"

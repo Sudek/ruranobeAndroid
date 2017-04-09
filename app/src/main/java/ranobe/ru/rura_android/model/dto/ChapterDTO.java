@@ -12,12 +12,6 @@ public class ChapterDTO {
   @SerializedName("orderNumber") @Expose private Integer orderNumber;
   @SerializedName("publishDate") @Expose private String publishDate;
   @SerializedName("nested") @Expose private Boolean nested;
-  @SerializedName("prevChapter") @Expose private Object prevChapter;
-  @SerializedName("nextChapter") @Expose private Object nextChapter;
-  @SerializedName("parentChapter") @Expose private Object parentChapter;
-  @SerializedName("childChapters") @Expose private Object childChapters;
-  @SerializedName("visibleOnPage") @Expose private Boolean visibleOnPage;
-  @SerializedName("text") @Expose private Object text;
   @SerializedName("urlPart") @Expose private String urlPart;
   @SerializedName("published") @Expose private Boolean published;
   @SerializedName("leveledTitle") @Expose private String leveledTitle;
@@ -84,54 +78,6 @@ public class ChapterDTO {
 
   public void setNested(Boolean nested) {
     this.nested = nested;
-  }
-
-  public Object getPrevChapter() {
-    return prevChapter;
-  }
-
-  public void setPrevChapter(Object prevChapter) {
-    this.prevChapter = prevChapter;
-  }
-
-  public Object getNextChapter() {
-    return nextChapter;
-  }
-
-  public void setNextChapter(Object nextChapter) {
-    this.nextChapter = nextChapter;
-  }
-
-  public Object getParentChapter() {
-    return parentChapter;
-  }
-
-  public void setParentChapter(Object parentChapter) {
-    this.parentChapter = parentChapter;
-  }
-
-  public Object getChildChapters() {
-    return childChapters;
-  }
-
-  public void setChildChapters(Object childChapters) {
-    this.childChapters = childChapters;
-  }
-
-  public Boolean getVisibleOnPage() {
-    return visibleOnPage;
-  }
-
-  public void setVisibleOnPage(Boolean visibleOnPage) {
-    this.visibleOnPage = visibleOnPage;
-  }
-
-  public Object getText() {
-    return text;
-  }
-
-  public void setText(Object text) {
-    this.text = text;
   }
 
   public String getUrlPart() {

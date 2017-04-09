@@ -53,7 +53,7 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
     description.setText(project.getDescription());
     Picasso.with(cover.getContext())
         .load("http:" + project.getUlrCover())
-        .fit()
+        .resize(450, 650)
         .into(cover);
   }
 }

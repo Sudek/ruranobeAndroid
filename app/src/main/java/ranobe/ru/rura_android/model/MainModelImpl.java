@@ -34,7 +34,9 @@ public class MainModelImpl implements MainModel {
   }
 
   @Override public Observable<List<ChapterDTO>> getChapters(int volumeId) {
-    return null;
+    return apiInterface.getChapters(volumeId)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread());
   }
 
   @Override public Observable<ImageDTO> getImage(int imageId) {

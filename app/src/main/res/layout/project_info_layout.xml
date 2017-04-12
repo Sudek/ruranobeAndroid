@@ -15,28 +15,61 @@
         android:scaleType="fitStart"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:contentDescription="@string/cover"
+        />
+    <TextView
+        android:id="@+id/info_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cover"
+        android:paddingTop="10dp"
+        android:text="Название:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
         />
     <TextView
         android:id="@+id/info_title_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/cover"
+        android:layout_below="@+id/info_name_label"
+        android:paddingTop="10dp"
         android:text="Title name"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        />
-    <TextView
-        android:id="@+id/info_author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/info_title_name"
-        android:text="Author"
         android:textAlignment="textStart"
         android:textSize="18sp"
         />
     <View
         android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/info_title_name"
+        android:background="@android:color/darker_gray"/>
+    <TextView
+        android:id="@+id/info_author_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/line1"
+        android:paddingTop="10dp"
+        android:text="Автор:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/info_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_author_label"
+        android:paddingTop="10dp"
+        android:text="Author"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        />
+    <View
+        android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/info_author"
@@ -45,7 +78,7 @@
         android:id="@+id/info_status_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line1"
+        android:layout_below="@+id/line2"
         android:paddingTop="10dp"
         android:text="Статус издания:"
         android:textAlignment="textStart"
@@ -63,7 +96,7 @@
         android:textSize="18sp"
         />
     <View
-        android:id="@+id/line2"
+        android:id="@+id/line3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/info_status"
@@ -72,7 +105,7 @@
         android:id="@+id/info_translation_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line2"
+        android:layout_below="@+id/line3"
         android:paddingTop="10dp"
         android:text="Статус перевода:"
         android:textAlignment="textStart"
@@ -90,7 +123,7 @@
         android:textSize="18sp"
         />
     <View
-        android:id="@+id/line3"
+        android:id="@+id/line4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/info_translation"
@@ -99,9 +132,9 @@
         android:id="@+id/info_project_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line3"
+        android:layout_below="@+id/line4"
         android:paddingTop="10dp"
-        android:text="Статус перевода:"
+        android:text="Описание:"
         android:textAlignment="textStart"
         android:textSize="20sp"
         android:textStyle="bold"

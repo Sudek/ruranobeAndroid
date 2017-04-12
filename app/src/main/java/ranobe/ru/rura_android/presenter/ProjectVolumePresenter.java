@@ -4,5 +4,7 @@ public interface ProjectVolumePresenter {
 
   void showVolumes();
 
+  void showChapters();
+
   void onStop();
 }

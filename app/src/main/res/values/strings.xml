@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">rura-android</string>
+  <string name="cover">cover</string>
 </resources>

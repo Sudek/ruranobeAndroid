@@ -43,6 +43,10 @@ public class ProjectVolumeImplPresenter implements ProjectVolumePresenter {
         });
   }
 
+  @Override public void showChapters() {
+
+  }
+
   @Override public void onStop() {
     if (!subscription.isUnsubscribed()) {
       subscription.unsubscribe();

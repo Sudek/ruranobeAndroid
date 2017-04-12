@@ -1,6 +1,7 @@
 package ranobe.ru.rura_android.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,12 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
     Volume volume = volumes.get(position);
     holder.volumeName.setText(volume.getNameRu());
+
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View view) {
+        Log.d("peka", String.valueOf(position));
+      }
+    });
 
   }
 

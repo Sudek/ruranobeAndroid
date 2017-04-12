@@ -3,24 +3,24 @@ package ranobe.ru.rura_android.presenter.entities;
 import java.io.Serializable;
 
 public class Preview implements Serializable {
-  private int Id;
+  private int projectId;
   private String projectName;
   private String author;
   private String urlBanner;
 
-  public Preview(int Id, String projectName, String author, String urlBanner) {
-    this.Id = Id;
+  public Preview(int projectId, String projectName, String author, String urlBanner) {
+    this.projectId = projectId;
     this.projectName = projectName;
     this.author = author;
     this.urlBanner = urlBanner;
   }
 
-  public int getId() {
-    return Id;
+  public int getProjectId() {
+    return projectId;
   }
 
-  public void setId(int id) {
-    Id = id;
+  public void setProjectId(int projectId) {
+    projectId = projectId;
   }
 
   public String getProjectName() {

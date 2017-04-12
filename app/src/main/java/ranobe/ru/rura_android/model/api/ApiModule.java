@@ -25,7 +25,7 @@ public class ApiModule {
 
 
     Retrofit.Builder builder = new Retrofit.Builder().
-        baseUrl("http://10.0.3.2:8080/api/")
+        baseUrl("http://192.168.1.163:8080/api/") //"http://10.0.3.2:8080/api/ for genymotion
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
 

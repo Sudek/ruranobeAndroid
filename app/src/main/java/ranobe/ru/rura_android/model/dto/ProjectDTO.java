@@ -33,6 +33,7 @@ public class ProjectDTO {
   @SerializedName("translationStatus") @Expose private String translationStatus;
   @SerializedName("lastUpdateDate") @Expose private Date lastUpdateDate;
   @SerializedName("lastEditDate") @Expose private Date lastEditDate;
+  @SerializedName("annotationParsed") @Expose private String annotationParsed;
 
   public Integer getProjectId() {
     return projectId;
@@ -248,5 +249,13 @@ public class ProjectDTO {
 
   public void setLastEditDate(Date lastEditDate) {
     this.lastEditDate = lastEditDate;
+  }
+
+  public String getAnnotationParsed() {
+    return annotationParsed;
+  }
+
+  public void setAnnotationParsed(String annotationParsed) {
+    this.annotationParsed = annotationParsed;
   }
 }

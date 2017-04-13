@@ -2,6 +2,7 @@ package ranobe.ru.rura_android.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
     author.setText(project.getAuthor());
     status.setText(project.getStatus());
     translationStatus.setText("Перевод " + project.getTranslationStatus());
-    description.setText(project.getDescription());
+    description.setText(Html.fromHtml(project.getDescription())); // TODO: 13.04.2017 do smth with deprecated method
     Picasso.with(cover.getContext())
         .load("http:" + project.getUlrCover())
         .resize(450, 650)

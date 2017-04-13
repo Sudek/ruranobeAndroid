@@ -13,7 +13,6 @@ import ranobe.ru.rura_android.presenter.entities.Volume;
 
 public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder> {
 
-  private static final String TAG = "ProjectVolumeAdapter";
   private List<Volume> volumes = new ArrayList<>();
 
   public void setVolume(List<Volume> volumes) {

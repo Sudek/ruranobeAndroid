@@ -21,7 +21,7 @@ public class ProjectMapper {
                 mainModel.getImage(volumeDTO.getImageOne()), mainModel.getProject(projectId),
                 (volumeDTO1, imageDTO, projectDTO) -> new Project(projectDTO.getProjectId(), projectDTO.getTitle(),
                     projectDTO.getAuthor(), projectDTO.getStatus(),
-                    projectDTO.getTranslationStatus(), projectDTO.getAnnotation(),
+                    projectDTO.getTranslationStatus(), projectDTO.getAnnotationParsed(),
                     imageDTO.getUrl()));
           }
         });

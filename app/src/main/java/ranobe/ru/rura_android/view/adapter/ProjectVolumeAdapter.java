@@ -1,7 +1,7 @@
 package ranobe.ru.rura_android.view.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.entities.Volume;
+import ranobe.ru.rura_android.view.ReaderActivity;
 
 public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder> {
 
@@ -33,10 +34,9 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
 
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
-        Log.d("peka", String.valueOf(position));
+        view.getContext().startActivity(new Intent(view.getContext(), ReaderActivity.class));
       }
     });
-
   }
 
   @Override public int getItemCount() {

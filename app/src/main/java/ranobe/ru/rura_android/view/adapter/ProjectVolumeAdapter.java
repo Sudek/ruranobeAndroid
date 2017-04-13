@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.view.adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +15,9 @@ import ranobe.ru.rura_android.view.ReaderActivity;
 
 public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder> {
 
+  private final static String VOLUME_ID = "VOLUME_ID";
   private List<Volume> volumes = new ArrayList<>();
+  private Context context;
 
   public void setVolume(List<Volume> volumes) {
     this.volumes = volumes;
@@ -24,6 +27,7 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
   @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View v = LayoutInflater.from(parent.getContext())
         .inflate(R.layout.chapter_element_layout, parent, false);
+    context = parent.getContext();
 
     return new ViewHolder(v);
   }
@@ -32,11 +36,10 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     Volume volume = volumes.get(position);
     holder.volumeName.setText(volume.getNameRu());
 
-    holder.itemView.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View view) {
-        view.getContext().startActivity(new Intent(view.getContext(), ReaderActivity.class));
-      }
-    });
+    Intent intent = new Intent(context, ReaderActivity.class);
+    intent.putExtra(VOLUME_ID, volume.getVolumeId());
+
+    holder.itemView.setOnClickListener(view -> context.startActivity(intent));
   }
 
   @Override public int getItemCount() {

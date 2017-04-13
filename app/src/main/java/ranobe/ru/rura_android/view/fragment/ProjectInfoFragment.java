@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import com.squareup.picasso.Picasso;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
-import ranobe.ru.rura_android.presenter.ProjectInfoPresenterImp;
+import ranobe.ru.rura_android.presenter.ProjectInfoPresenterImpl;
 import ranobe.ru.rura_android.presenter.entities.Project;
 import ranobe.ru.rura_android.view.ProjectActivity;
 
@@ -40,7 +40,7 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
 
     ProjectActivity activity = (ProjectActivity) getActivity();
 
-    ProjectInfoPresenter infoPresenter = new ProjectInfoPresenterImp(this, activity.getProjectId());
+    ProjectInfoPresenter infoPresenter = new ProjectInfoPresenterImpl(this, activity.getProjectId());
     infoPresenter.showProjectInfo();
 
     return view;

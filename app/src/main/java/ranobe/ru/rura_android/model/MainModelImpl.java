@@ -6,6 +6,7 @@ import ranobe.ru.rura_android.model.api.ApiModule;
 import ranobe.ru.rura_android.model.dto.ChapterDTO;
 import ranobe.ru.rura_android.model.dto.ImageDTO;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
+import ranobe.ru.rura_android.model.dto.TextDTO;
 import ranobe.ru.rura_android.model.dto.VolumeDTO;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -35,6 +36,12 @@ public class MainModelImpl implements MainModel {
 
   @Override public Observable<List<ChapterDTO>> getChapters(int volumeId) {
     return apiInterface.getChapters(volumeId)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread());
+  }
+
+  @Override public Observable<TextDTO> getText(int chapterId) {
+    return apiInterface.getText(chapterId)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread());
   }

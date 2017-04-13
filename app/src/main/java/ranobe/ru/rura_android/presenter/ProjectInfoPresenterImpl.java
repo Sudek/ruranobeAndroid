@@ -7,14 +7,14 @@ import rx.Observer;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
 
-public class ProjectInfoPresenterImp implements ProjectInfoPresenter {
+public class ProjectInfoPresenterImpl implements ProjectInfoPresenter {
 
   private ProjectInfoView projectView;
   private ProjectMapper mapper = new ProjectMapper();
   private Subscription subscription = Subscriptions.empty();
   private int projectId;
 
-  public ProjectInfoPresenterImp(ProjectInfoView projectView, int projectId) {
+  public ProjectInfoPresenterImpl(ProjectInfoView projectView, int projectId) {
     this.projectView = projectView;
     this.projectId = projectId;
   }

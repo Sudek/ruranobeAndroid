@@ -17,6 +17,7 @@ import ranobe.ru.rura_android.view.ProjectActivity;
 
 public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHolder> {
 
+  private final static String PROJECT_ID = "PROJECT_ID";
   private List<Preview> previews = new ArrayList<>();
   private Context context;
 
@@ -42,10 +43,9 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
         .into(holder.banner);
 
     Intent intent = new Intent(context, ProjectActivity.class);
-    intent.putExtra("PROJECT_ID", preview.getProjectId());
+    intent.putExtra(PROJECT_ID, preview.getProjectId());
 
-    holder.itemView.setOnClickListener(view -> context
-        .startActivity(intent));
+    holder.itemView.setOnClickListener(view -> context.startActivity(intent));
   }
 
   @Override public int getItemCount() {

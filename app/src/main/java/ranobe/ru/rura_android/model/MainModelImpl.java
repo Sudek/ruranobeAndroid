@@ -46,9 +46,15 @@ public class MainModelImpl implements MainModel {
         .observeOn(AndroidSchedulers.mainThread());
   }
 
+  @Override public Observable<List<ImageDTO>> getIllustrations(int chapterId) {
+    return apiInterface.getIllustration(chapterId)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread());
+  }
+
   @Override public Observable<ImageDTO> getImage(int imageId) {
     return apiInterface.getImage(imageId)
-        .subscribeOn(Schedulers.io())
+        .subscribeOn(Schedulers.newThread())
         .observeOn(AndroidSchedulers.mainThread());
   }
 }

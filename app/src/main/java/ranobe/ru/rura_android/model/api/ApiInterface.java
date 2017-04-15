@@ -27,6 +27,9 @@ public interface ApiInterface {
   @GET("chapters/{chapterId}/text")
   Observable<TextDTO> getText(@Path("chapterId") int chapterId);
 
+  @GET("chapters/{chapterId}/illustration")
+  Observable<List<ImageDTO>> getIllustration(@Path("chapterId") int chapterId);
+
   @GET("images/{imageId}")
   Observable<ImageDTO> getImage(@Path("imageId") int imageId);
 }

@@ -20,5 +20,7 @@ public interface MainModel {
 
   Observable<TextDTO> getText(int chapterId);
 
+  Observable<List<ImageDTO>> getIllustrations(int chapterId);
+
   Observable<ImageDTO> getImage(int imageId);
 }

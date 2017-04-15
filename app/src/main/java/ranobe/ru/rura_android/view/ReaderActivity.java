@@ -25,7 +25,7 @@ public class ReaderActivity extends AppCompatActivity implements ReaderView {
     Bundle bundle = getIntent().getExtras();
     volumeId = bundle.getInt(VOLUME_ID);
 
-    ReaderPresenter readerPresenter = new ReaderPresenterImpl(this, 6098);
+    ReaderPresenter readerPresenter = new ReaderPresenterImpl(this, 8180);
     readerPresenter.showText();
   }
 

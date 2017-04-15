@@ -9,13 +9,13 @@ import rx.subscriptions.Subscriptions;
 
 public class ReaderPresenterImpl implements ReaderPresenter {
   private ReaderView readerView;
-  private int chapterId;
+  private int volumeId;
   private TextMapper mapper = new TextMapper();
   private Subscription subscription = Subscriptions.empty();
 
-  public ReaderPresenterImpl(ReaderView readerView, int chapterId) {
+  public ReaderPresenterImpl(ReaderView readerView, int volumeId) {
     this.readerView = readerView;
-    this.chapterId = chapterId;
+    this.volumeId = volumeId;
   }
 
   @Override public void showText() {
@@ -23,7 +23,7 @@ public class ReaderPresenterImpl implements ReaderPresenter {
       subscription.unsubscribe();
     }
 
-    subscription = mapper.text(chapterId)
+    subscription = mapper.text(volumeId)
         .subscribe(new Observer<Text>() {
           @Override public void onCompleted() {
 

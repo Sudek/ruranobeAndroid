@@ -19,8 +19,8 @@ public class ProjectMapper {
           @Override public Observable<Project> call(VolumeDTO volumeDTO) {
             return Observable.zip(Observable.just(volumeDTO),
                 mainModel.getImage(volumeDTO.getImageOne()), mainModel.getProject(projectId),
-                (volumeDTO1, imageDTO, projectDTO) -> new Project(projectDTO.getProjectId(), projectDTO.getTitle(),
-                    projectDTO.getAuthor(), projectDTO.getStatus(),
+                (volumeDTO1, imageDTO, projectDTO) -> new Project(projectDTO.getProjectId(),
+                    projectDTO.getTitle(), projectDTO.getAuthor(), projectDTO.getStatus(),
                     projectDTO.getTranslationStatus(), projectDTO.getAnnotationParsed(),
                     imageDTO.getUrl()));
           }

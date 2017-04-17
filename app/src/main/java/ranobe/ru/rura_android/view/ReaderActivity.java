@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ReaderPresenter;
 import ranobe.ru.rura_android.presenter.ReaderPresenterImpl;
@@ -25,14 +26,13 @@ public class ReaderActivity extends AppCompatActivity implements ReaderView {
     Bundle bundle = getIntent().getExtras();
     volumeId = bundle.getInt(VOLUME_ID);
 
-    ReaderPresenter readerPresenter = new ReaderPresenterImpl(this, 8180);
+    ReaderPresenter readerPresenter = new ReaderPresenterImpl(this, volumeId);
     readerPresenter.showText();
   }
 
-  @Override public void showData(Text text) {
-    webView.loadData(text.getTextHtml(), "text/html; charset=utf-8", "UTF-8");
-    //myWebView.loadUrl("http://ruranobe.ru/r/ddmmd/v1/p");
-
+  @Override public void showData(List<Text> text) {
+    webView.loadData(text.get(1).getTextHtml(), "text/html; charset=utf-8", "UTF-8");
+    //webView.loadUrl("http://ruranobe.ru/r/ddmmd/v1/p");
   }
 
   @Override public void showError(String error) {

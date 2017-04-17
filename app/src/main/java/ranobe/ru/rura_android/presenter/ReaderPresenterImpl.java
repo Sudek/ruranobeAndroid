@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.presenter;
 
+import java.util.List;
 import ranobe.ru.rura_android.presenter.entities.Text;
 import ranobe.ru.rura_android.presenter.mappers.TextMapper;
 import ranobe.ru.rura_android.view.ReaderView;
@@ -24,19 +25,19 @@ public class ReaderPresenterImpl implements ReaderPresenter {
     }
 
     subscription = mapper.text(volumeId)
-        .subscribe(new Observer<Text>() {
-          @Override public void onCompleted() {
+        .subscribe(new Observer<List<Text>>() {
+      @Override public void onCompleted() {
 
-          }
+      }
 
-          @Override public void onError(Throwable e) {
+      @Override public void onError(Throwable e) {
 
-          }
+      }
 
-          @Override public void onNext(Text text) {
-            readerView.showData(text);
-          }
-        });
+      @Override public void onNext(List<Text> texts) {
+        readerView.showData(texts);
+      }
+    });
   }
 
   @Override public void onStop() {

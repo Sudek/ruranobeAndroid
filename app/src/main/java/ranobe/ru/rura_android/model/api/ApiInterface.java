@@ -22,7 +22,7 @@ public interface ApiInterface {
   Observable<List<VolumeDTO>> getVolumes(@Path("projectId") int projectId);
 
   @GET("volumes/{volumeId}/chapters")
-  Observable<List<ChapterDTO>> getChapters(@Path("volumieId") int volumeId);
+  Observable<List<ChapterDTO>> getChapters(@Path("volumeId") int volumeId);
 
   @GET("chapters/{chapterId}/text")
   Observable<TextDTO> getText(@Path("chapterId") int chapterId);

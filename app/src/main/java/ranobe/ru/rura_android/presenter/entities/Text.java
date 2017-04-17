@@ -1,24 +1,37 @@
 package ranobe.ru.rura_android.presenter.entities;
 
+import java.util.ArrayList;
+
 public class Text {
-  private Integer textId;
+  private int textId;
+  private int orderNumber;
   private String textHtml;
   private String contents;
   private String footnotes;
+  private ArrayList<String> imageUri;
 
-  public Text(Integer textId, String textHtml, String contents, String footnotes) {
+  public Text(int textId, int orderNumber, String textHtml, String contents, String footnotes) {
     this.textId = textId;
+    this.orderNumber = orderNumber;
     this.textHtml = textHtml;
     this.contents = contents;
     this.footnotes = footnotes;
   }
 
-  public Integer getTextId() {
+  public int getTextId() {
     return textId;
   }
 
-  public void setTextId(Integer textId) {
+  public void setTextId(int textId) {
     this.textId = textId;
+  }
+
+  public int getOrderNumber() {
+    return orderNumber;
+  }
+
+  public void setOrderNumber(int orderNumber) {
+    this.orderNumber = orderNumber;
   }
 
   public String getTextHtml() {
@@ -43,5 +56,13 @@ public class Text {
 
   public void setFootnotes(String footnotes) {
     this.footnotes = footnotes;
+  }
+
+  public ArrayList<String> getImageUri() {
+    return imageUri;
+  }
+
+  public void setImageUri(ArrayList<String> imageUri) {
+    this.imageUri = imageUri;
   }
 }

@@ -1,13 +1,12 @@
 package ranobe.ru.rura_android.presenter.mappers;
 
+import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.model.MainModelImpl;
 import ranobe.ru.rura_android.model.dto.ChapterDTO;
-import ranobe.ru.rura_android.model.dto.TextDTO;
 import ranobe.ru.rura_android.presenter.entities.Text;
 import rx.Observable;
 import rx.functions.Func1;
-import rx.functions.Func2;
 
 public class TextMapper {
   private MainModelImpl mainModel = new MainModelImpl();
@@ -19,11 +18,18 @@ public class TextMapper {
           @Override public Observable<Text> call(ChapterDTO chapterDTO) {
             return Observable.zip(Observable.just(chapterDTO),
                 mainModel.getText(chapterDTO.getChapterId()),
-                new Func2<ChapterDTO, TextDTO, Text>() {
-                  @Override public Text call(ChapterDTO chapterDTO, TextDTO textDTO) {
-                    return new Text(textDTO.getTextId(), chapterDTO.getOrderNumber(),
-                        textDTO.getTextHtml(), textDTO.getContents(), textDTO.getFootnotes());
+                mainModel.getIllustrations(chapterDTO.getChapterId()),
+                (chapterDTO1, textDTO, imageDTOs) -> {
+                  int size = imageDTOs.size();
+                  List<String> imageUrl = new ArrayList<>();
+                  if (0 < size) {
+                    for (int x = 0; x < size; x++) {
+                      imageUrl.add(imageDTOs.get(x).getUrl());
+                    }
                   }
+                  return new Text(textDTO.getTextId(), chapterDTO1.getOrderNumber(),
+                      textDTO.getTextHtml(), textDTO.getContents(), textDTO.getFootnotes(),
+                      imageUrl);
                 });
           }
         })

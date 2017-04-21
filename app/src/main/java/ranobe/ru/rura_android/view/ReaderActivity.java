@@ -2,19 +2,20 @@ package ranobe.ru.rura_android.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.webkit.WebView;
 import butterknife.Bind;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.entities.Text;
-import ranobe.ru.rura_android.view.adapter.ReaderPagerAdapter;
-import ranobe.ru.rura_android.view.fragment.ReaderFragment;
+import ranobe.ru.rura_android.view.adapter.ReaderAdapter;
 
 public class ReaderActivity extends AppCompatActivity implements ReaderView {
 
   private final static String VOLUME_ID = "VOLUME_ID";
+  private ReaderAdapter readerAdapter;
   private int volumeId;
 
   @Bind(R.id.web_view) WebView webView;
@@ -23,14 +24,17 @@ public class ReaderActivity extends AppCompatActivity implements ReaderView {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tab_layout);
 
+    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.readerRecyclerView);
+
     Bundle bundle = getIntent().getExtras();
     volumeId = bundle.getInt(VOLUME_ID);
 
-    ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-    setupViewPager(viewPager);
+    LinearLayoutManager layoutManager =
+        new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+    recyclerView.setLayoutManager(layoutManager);
 
-    //TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-    //tabLayout.setupWithViewPager(viewPager);
+    readerAdapter = new ReaderAdapter();
+    recyclerView.setAdapter(readerAdapter);
   }
 
   @Override public void showData(List<Text> text) {
@@ -40,18 +44,5 @@ public class ReaderActivity extends AppCompatActivity implements ReaderView {
 
   @Override public void showError(String error) {
 
-  }
-
-  private void setupViewPager(ViewPager viewPager) {
-    ReaderPagerAdapter adapter = new ReaderPagerAdapter(getSupportFragmentManager());
-    adapter.addFragment(new ReaderFragment(), "1");
-    adapter.addFragment(new ReaderFragment(), "2");
-    adapter.addFragment(new ReaderFragment(), "3");
-    viewPager.setCurrentItem(1);
-    viewPager.setAdapter(adapter);
-  }
-
-  public int getVolumeId() {
-    return volumeId;
   }
 }

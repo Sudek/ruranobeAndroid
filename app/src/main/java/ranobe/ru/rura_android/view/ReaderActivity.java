@@ -8,13 +8,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.entities.Text;
 import ranobe.ru.rura_android.view.fragment.ReaderFragment;
 
 public class ReaderActivity extends FragmentActivity implements ReaderView {
-
+//https://developer.android.com/training/animation/screen-slide.html
+//http://stackoverflow.com/questions/23853585/how-can-i-change-the-fragments-content-on-slide-in-viewpager
   private final static String VOLUME_ID = "VOLUME_ID";
   private int volumeId;
 
@@ -49,18 +51,24 @@ public class ReaderActivity extends FragmentActivity implements ReaderView {
   }
 
   private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+    ArrayList<String> text = new ArrayList<>();
     public ScreenSlidePagerAdapter(FragmentManager fm) {
       super(fm);
+      ArrayList<String> tes = new ArrayList<>();
+      tes.add("one");
+      tes.add("two");
+      tes.add("three");
+      this.text = tes;
     }
 
-    @Override
-    public Fragment getItem(int position) {
-      return new ReaderFragment();
+    @Override public Fragment getItem(int position) {
+      ReaderFragment fragment = new ReaderFragment();
+      fragment.setText(text.get(position));
+      return fragment;
     }
 
-    @Override
-    public int getCount() {
-      return 5;
+    @Override public int getCount() {
+      return 3;
     }
   }
   @Override public void showData(List<Text> text) {

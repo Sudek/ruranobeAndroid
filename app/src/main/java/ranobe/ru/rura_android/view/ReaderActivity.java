@@ -11,12 +11,15 @@ import android.support.v4.view.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
+import ranobe.ru.rura_android.presenter.ReaderPresenter;
+import ranobe.ru.rura_android.presenter.ReaderPresenterImpl;
 import ranobe.ru.rura_android.presenter.entities.Text;
 import ranobe.ru.rura_android.view.fragment.ReaderFragment;
 
-public class ReaderActivity extends FragmentActivity implements ReaderView {
+public class ReaderActivity extends FragmentActivity implements ReaderView{
 //https://developer.android.com/training/animation/screen-slide.html
 //http://stackoverflow.com/questions/23853585/how-can-i-change-the-fragments-content-on-slide-in-viewpager
+//http://stackoverflow.com/questions/10431945/how-to-get-n-text-that-can-be-fit-on-screen-textview-with-a-specific-size
   private final static String VOLUME_ID = "VOLUME_ID";
   private int volumeId;
 
@@ -32,10 +35,11 @@ public class ReaderActivity extends FragmentActivity implements ReaderView {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.pager);
 
-    // Instantiate a ViewPager and a PagerAdapter.
-    mPager = (ViewPager) findViewById(R.id.pager);
-    mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-    mPager.setAdapter(mPagerAdapter);
+    Bundle bundle = getIntent().getExtras();
+    volumeId = bundle.getInt(VOLUME_ID);
+
+    ReaderPresenter presenter = new ReaderPresenterImpl(this, volumeId);
+    presenter.showText();
 
   }
 
@@ -52,13 +56,11 @@ public class ReaderActivity extends FragmentActivity implements ReaderView {
 
   private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<String> text = new ArrayList<>();
-    public ScreenSlidePagerAdapter(FragmentManager fm) {
+    public ScreenSlidePagerAdapter(FragmentManager fm, List<Text> texts) {
       super(fm);
-      ArrayList<String> tes = new ArrayList<>();
-      tes.add("one");
-      tes.add("two");
-      tes.add("three");
-      this.text = tes;
+      for (int x = 0; x < texts.size(); x++) {
+        text.add(texts.get(x).getTextHtml());
+      }
     }
 
     @Override public Fragment getItem(int position) {
@@ -74,6 +76,10 @@ public class ReaderActivity extends FragmentActivity implements ReaderView {
   @Override public void showData(List<Text> text) {
     //webView.loadData(text.get(1).getTextHtml(), "text/html; charset=utf-8", "UTF-8");
     //webView.loadUrl("http://ruranobe.ru/r/ddmmd/v1/p");
+    // Instantiate a ViewPager and a PagerAdapter.
+    mPager = (ViewPager) findViewById(R.id.pager);
+    mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), text);
+    mPager.setAdapter(mPagerAdapter);
   }
 
   @Override public void showError(String error) {

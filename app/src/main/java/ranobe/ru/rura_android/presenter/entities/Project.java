@@ -1,6 +1,7 @@
 package ranobe.ru.rura_android.presenter.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Project implements Serializable {
   private int projectId;
@@ -10,9 +11,10 @@ public class Project implements Serializable {
   private String translationStatus;
   private String description;
   private String ulrCover;
+  private Date lastUpdate;
 
   public Project(int projectId, String name, String author, String status, String translationStatus,
-      String description, String ulrCover) {
+      String description, String ulrCover, Date lastUpdate) {
     this.projectId = projectId;
     this.name = name;
     this.author = author;
@@ -20,14 +22,7 @@ public class Project implements Serializable {
     this.translationStatus = translationStatus;
     this.description = description;
     this.ulrCover = ulrCover;
-  }
-
-  public int getId() {
-    return projectId;
-  }
-
-  public void setId(int projectId) {
-    this.projectId = projectId;
+    this.lastUpdate = lastUpdate;
   }
 
   public String getName() {
@@ -76,5 +71,21 @@ public class Project implements Serializable {
 
   public void setUlrCover(String ulrCover) {
     this.ulrCover = ulrCover;
+  }
+
+  public int getProjectId() {
+    return projectId;
+  }
+
+  public void setProjectId(int projectId) {
+    this.projectId = projectId;
+  }
+
+  public Date getLastUpdate() {
+    return lastUpdate;
+  }
+
+  public void setLastUpdate(Date lastUpdate) {
+    this.lastUpdate = lastUpdate;
   }
 }

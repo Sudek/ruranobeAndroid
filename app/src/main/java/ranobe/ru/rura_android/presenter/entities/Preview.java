@@ -1,18 +1,22 @@
 package ranobe.ru.rura_android.presenter.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Preview implements Serializable {
   private int projectId;
   private String projectName;
   private String author;
   private String urlBanner;
+  private Date lastUpdate;
 
-  public Preview(int projectId, String projectName, String author, String urlBanner) {
+  public Preview(int projectId, String projectName, String author, String urlBanner,
+      Date lastUpdate) {
     this.projectId = projectId;
     this.projectName = projectName;
     this.author = author;
     this.urlBanner = urlBanner;
+    this.lastUpdate = lastUpdate;
   }
 
   public int getProjectId() {
@@ -45,5 +49,13 @@ public class Preview implements Serializable {
 
   public void setUrlBanner(String urlBanner) {
     this.urlBanner = urlBanner;
+  }
+
+  public Date getLastUpdate() {
+    return lastUpdate;
+  }
+
+  public void setLastUpdate(Date lastUpdate) {
+    this.lastUpdate = lastUpdate;
   }
 }

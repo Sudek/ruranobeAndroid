@@ -22,7 +22,7 @@ public class ProjectMapper {
                 (volumeDTO1, imageDTO, projectDTO) -> new Project(projectDTO.getProjectId(),
                     projectDTO.getTitle(), projectDTO.getAuthor(), projectDTO.getStatus(),
                     projectDTO.getTranslationStatus(), projectDTO.getAnnotationParsed(),
-                    imageDTO.getUrl()));
+                    imageDTO.getUrl(), projectDTO.getLastUpdateDate()));
           }
         });
   }

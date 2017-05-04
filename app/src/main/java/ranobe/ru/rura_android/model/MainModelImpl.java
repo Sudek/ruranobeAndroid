@@ -62,7 +62,7 @@ public class MainModelImpl implements MainModel {
 
   @Override public Observable<Response<ResponseBody>> getVolumeEpub(String projectUrl, String volumeUrl) {
     return apiInterface.getVolumeEpub(projectUrl, volumeUrl)
-        .subscribeOn(Schedulers.io())
+        .subscribeOn(Schedulers.newThread())
         .observeOn(AndroidSchedulers.mainThread());
   }
 }

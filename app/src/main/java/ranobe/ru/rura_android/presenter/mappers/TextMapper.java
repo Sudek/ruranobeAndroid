@@ -13,7 +13,7 @@ import rx.functions.Func1;
 
 public class TextMapper {
   private MainModelImpl mainModel = new MainModelImpl();
-
+//http://www.codexpedia.com/android/android-download-large-file-using-retrofit-streaming/
   public Observable<File> text(int volumeId) {
     return mainModel.getVolumeEpub("tnynn", "v1")
         .flatMap(new Func1<Response<ResponseBody>, Observable<File>>() {
@@ -35,11 +35,8 @@ public class TextMapper {
                 // you can access body of response
                 sink.writeAll(responseBodyResponse.body().source());
                 sink.close();
-                subscriber.onNext(file);
-                subscriber.onCompleted();
               } catch (IOException e) {
                 e.printStackTrace();
-                subscriber.onError(e);
               }
             });
           }

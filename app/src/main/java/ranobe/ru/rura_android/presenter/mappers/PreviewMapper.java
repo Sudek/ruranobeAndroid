@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.presenter.mappers;
 
+import java.util.Date;
 import java.util.List;
 import ranobe.ru.rura_android.model.MainModelImpl;
 import ranobe.ru.rura_android.presenter.entities.Preview;
@@ -17,7 +18,9 @@ public class PreviewMapper {
         .flatMap(projectDTO -> Observable.zip(Observable.just(projectDTO),
             mainModel.getImage(projectDTO.getImageId()),
             (projectDTO1, imageDTO) -> new Preview(projectDTO1.getProjectId(),
-                projectDTO1.getTitle(), projectDTO1.getAuthor(), imageDTO.getUrl())))
-        .toList();
+                projectDTO1.getTitle(), projectDTO1.getAuthor(), imageDTO.getUrl(),
+                projectDTO1.getLastUpdateDate())))
+        .toSortedList((preview, preview2) -> Integer.compare(preview.getProjectId(),
+            preview2.getProjectId()));
   }
 }

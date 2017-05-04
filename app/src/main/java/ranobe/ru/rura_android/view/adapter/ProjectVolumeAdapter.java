@@ -11,6 +11,8 @@ import com.folioreader.activity.FolioActivity;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
+import ranobe.ru.rura_android.presenter.ReaderPresenter;
+import ranobe.ru.rura_android.presenter.ReaderPresenterImpl;
 import ranobe.ru.rura_android.presenter.entities.Volume;
 
 public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder> {
@@ -39,9 +41,12 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     //Intent intent = new Intent(context, ReaderActivity.class);
     //intent.putExtra(VOLUME_ID, volume.getVolumeId());
 
+    ReaderPresenter presenter = new ReaderPresenterImpl(2);
+    presenter.showText();
+
     Intent intent = new Intent(context, FolioActivity.class);
     intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_TYPE, FolioActivity.EpubSourceType.RAW);
-    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_PATH, R.raw.danmachi_01);
+    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_PATH, R.raw.gakusen_toshi_asterisk_01);
 
     holder.itemView.setOnClickListener(view -> context.startActivity(intent));
   }

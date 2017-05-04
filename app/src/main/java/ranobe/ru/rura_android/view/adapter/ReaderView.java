@@ -1,4 +1,4 @@
-package ranobe.ru.rura_android.view;
+package ranobe.ru.rura_android.view.adapter;
 
 import java.util.List;
 import ranobe.ru.rura_android.presenter.entities.Text;

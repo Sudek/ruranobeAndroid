@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.model;
 
+import com.squareup.okhttp.ResponseBody;
 import java.util.List;
 import ranobe.ru.rura_android.model.api.ApiInterface;
 import ranobe.ru.rura_android.model.api.ApiModule;
@@ -8,6 +9,7 @@ import ranobe.ru.rura_android.model.dto.ImageDTO;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
 import ranobe.ru.rura_android.model.dto.TextDTO;
 import ranobe.ru.rura_android.model.dto.VolumeDTO;
+import retrofit.Response;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -55,6 +57,12 @@ public class MainModelImpl implements MainModel {
   @Override public Observable<ImageDTO> getImage(int imageId) {
     return apiInterface.getImage(imageId)
         .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread());
+  }
+
+  @Override public Observable<Response<ResponseBody>> getVolumeEpub(String projectUrl, String volumeUrl) {
+    return apiInterface.getVolumeEpub(projectUrl, volumeUrl)
+        .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread());
   }
 }

@@ -14,7 +14,7 @@ public class ProjectActivity extends AppCompatActivity {
 
   private final static String PROJECT_ID = "PROJECT_ID";
   private int projectId;
-
+  // TODO: 02.05.2017 http://ruranobe.ru/d/epub/tnynn/v1 
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

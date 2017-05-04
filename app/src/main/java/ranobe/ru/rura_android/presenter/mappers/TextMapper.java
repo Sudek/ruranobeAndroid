@@ -1,39 +1,48 @@
 package ranobe.ru.rura_android.presenter.mappers;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Environment;
+import com.squareup.okhttp.ResponseBody;
+import java.io.File;
+import java.io.IOException;
+import okio.BufferedSink;
+import okio.Okio;
 import ranobe.ru.rura_android.model.MainModelImpl;
-import ranobe.ru.rura_android.model.dto.ChapterDTO;
-import ranobe.ru.rura_android.presenter.entities.Text;
+import retrofit.Response;
 import rx.Observable;
 import rx.functions.Func1;
 
 public class TextMapper {
   private MainModelImpl mainModel = new MainModelImpl();
 
-  public Observable<List<Text>> text(int volumeId) {
-    return mainModel.getChapters(volumeId)
-        .flatMap(Observable::from)
-        .flatMap(new Func1<ChapterDTO, Observable<Text>>() {
-          @Override public Observable<Text> call(ChapterDTO chapterDTO) {
-            return Observable.zip(Observable.just(chapterDTO),
-                mainModel.getText(chapterDTO.getChapterId()),
-                mainModel.getIllustrations(chapterDTO.getChapterId()),
-                (chapterDTO1, textDTO, imageDTOs) -> {
-                  int size = imageDTOs.size();
-                  List<String> imageUrl = new ArrayList<>();
-                  if (0 < size) {
-                    for (int x = 0; x < size; x++) {
-                      imageUrl.add(imageDTOs.get(x).getUrl());
-                    }
-                  }
-                  return new Text(textDTO.getTextId(), chapterDTO1.getOrderNumber(),
-                      textDTO.getTextHtml(), textDTO.getContents(), textDTO.getFootnotes(),
-                      imageUrl);
-                });
+  public Observable<File> text(int volumeId) {
+    return mainModel.getVolumeEpub("tnynn", "v1")
+        .flatMap(new Func1<Response<ResponseBody>, Observable<File>>() {
+          @Override public Observable<File> call(Response<ResponseBody> responseBodyResponse) {
+            return Observable.create(subscriber -> {
+              try {
+                // you can access headers of response
+                String header = responseBodyResponse.headers().get("Content-Disposition");
+                // this is specific case, it's up to you how you want to save your file
+                // if you are not downloading file from direct link, you might be lucky to obtain file name from header
+                //String fileName = header.replace("attachment; filename*=UTF-8", "");
+                String fileName = header.substring(29);
+
+                // will create file in global Music directory, can be any other directory, just don't forget to handle permissions
+                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    .getAbsoluteFile(), fileName);
+
+                BufferedSink sink = Okio.buffer(Okio.sink(file));
+                // you can access body of response
+                sink.writeAll(responseBodyResponse.body().source());
+                sink.close();
+                subscriber.onNext(file);
+                subscriber.onCompleted();
+              } catch (IOException e) {
+                e.printStackTrace();
+                subscriber.onError(e);
+              }
+            });
           }
-        })
-        .toSortedList(
-            (text, text2) -> Integer.compare(text.getOrderNumber(), text2.getOrderNumber()));
+        });
   }
 }

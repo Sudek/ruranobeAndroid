@@ -5,14 +5,16 @@ import java.util.Date;
 
 public class Preview implements Serializable {
   private int projectId;
+  private String projectUrl;
   private String projectName;
   private String author;
   private String urlBanner;
   private Date lastUpdate;
 
-  public Preview(int projectId, String projectName, String author, String urlBanner,
+  public Preview(int projectId, String projectUrl, String projectName, String author, String urlBanner,
       Date lastUpdate) {
     this.projectId = projectId;
+    this.projectUrl = projectUrl;
     this.projectName = projectName;
     this.author = author;
     this.urlBanner = urlBanner;
@@ -25,6 +27,14 @@ public class Preview implements Serializable {
 
   public void setProjectId(int projectId) {
     projectId = projectId;
+  }
+
+  public String getProjectUrl() {
+    return projectUrl;
+  }
+
+  public void setProjectUrl(String projectUrl) {
+    this.projectUrl = projectUrl;
   }
 
   public String getProjectName() {

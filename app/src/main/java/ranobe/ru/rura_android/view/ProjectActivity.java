@@ -13,8 +13,9 @@ import ranobe.ru.rura_android.view.fragment.ProjectVolumeFragment;
 public class ProjectActivity extends AppCompatActivity {
 
   private final static String PROJECT_ID = "PROJECT_ID";
+  private final static String PROJECT_URL = "PROJECT_URL";
   private int projectId;
-  // TODO: 02.05.2017 http://ruranobe.ru/d/epub/tnynn/v1 
+  private String projectUrl;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class ProjectActivity extends AppCompatActivity {
 
     Bundle bundle = getIntent().getExtras();
     projectId = bundle.getInt(PROJECT_ID);
+    projectUrl = bundle.getString(PROJECT_URL);
   }
 
   private void setupViewPager(ViewPager viewPager) {
@@ -39,5 +41,9 @@ public class ProjectActivity extends AppCompatActivity {
 
   public int getProjectId() {
     return projectId;
+  }
+
+  public String getProjectUrl() {
+    return projectUrl;
   }
 }

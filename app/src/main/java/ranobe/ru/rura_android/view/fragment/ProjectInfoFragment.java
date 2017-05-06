@@ -51,7 +51,7 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
     author.setText(project.getAuthor());
     status.setText(project.getStatus());
     translationStatus.setText("Перевод " + project.getTranslationStatus());
-    description.setText(Html.fromHtml(project.getDescription())); // TODO: 13.04.2017 do smth with deprecated method
+    description.setText(Html.fromHtml(project.getDescription()));
     Picasso.with(cover.getContext())
         .load("http:" + project.getUlrCover())
         .resize(450, 650)

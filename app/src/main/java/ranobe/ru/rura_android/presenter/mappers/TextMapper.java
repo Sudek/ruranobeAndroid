@@ -14,8 +14,8 @@ import rx.functions.Func1;
 public class TextMapper {
   private MainModelImpl mainModel = new MainModelImpl();
 //http://www.codexpedia.com/android/android-download-large-file-using-retrofit-streaming/
-  public Observable<File> text(int volumeId) {
-    return mainModel.getVolumeEpub("tnynn", "v1")
+  public Observable<File> volumeFileEpub(String projectUrl, String volumeUrl) {
+    return mainModel.getVolumeEpub(projectUrl, volumeUrl)
         .flatMap(new Func1<Response<ResponseBody>, Observable<File>>() {
           @Override public Observable<File> call(Response<ResponseBody> responseBodyResponse) {
             return Observable.create(subscriber -> {

@@ -10,13 +10,15 @@ import rx.subscriptions.Subscriptions;
 
 public class ReaderPresenterImpl implements ReaderPresenter {
   private ReaderView readerView;
-  private int volumeId;
+  private String projectUrl;
+  private String volumeUrl;
   private TextMapper mapper = new TextMapper();
   private Subscription subscription = Subscriptions.empty();
 
-  public ReaderPresenterImpl(int volumeId) {
+  public ReaderPresenterImpl(String projectUrl, String volumeUrl) {
     this.readerView = readerView;
-    this.volumeId = volumeId;
+    this.projectUrl = projectUrl;
+    this.volumeUrl = volumeUrl;
   }
 
   @Override public void showText() {
@@ -24,7 +26,7 @@ public class ReaderPresenterImpl implements ReaderPresenter {
       subscription.unsubscribe();
     }
 
-    subscription = mapper.text(volumeId)
+    subscription = mapper.volumeFileEpub(projectUrl, volumeUrl)
         .subscribe(new Observer<File>() {
           @Override public void onCompleted() {
 

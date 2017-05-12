@@ -20,9 +20,11 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
   private final static String VOLUME_ID = "VOLUME_ID";
   private List<Volume> volumes = new ArrayList<>();
   private Context context;
+  private String projectUrl;
 
-  public void setVolume(List<Volume> volumes) {
+  public void setVolume(List<Volume> volumes, String projectUrl) {
     this.volumes = volumes;
+    this.projectUrl = projectUrl;
     notifyDataSetChanged();
   }
 
@@ -38,15 +40,12 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     Volume volume = volumes.get(position);
     holder.volumeName.setText(volume.getNameRu());
 
-    //Intent intent = new Intent(context, ReaderActivity.class);
-    //intent.putExtra(VOLUME_ID, volume.getVolumeId());
-
     Intent intent = new Intent(context, FolioActivity.class);
     intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_TYPE, FolioActivity.EpubSourceType.RAW);
     intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_PATH, R.raw.gakusen_toshi_asterisk_01);
 //storage/emulated/0/Download/Tate_no_Yuusha_no_Nariagari_01.epub
     holder.itemView.setOnClickListener(view -> {
-      ReaderPresenter presenter = new ReaderPresenterImpl("tnynn", "v2");
+      ReaderPresenter presenter = new ReaderPresenterImpl(projectUrl, volume.getUrl());
       presenter.showText();
       context.startActivity(intent);
     });

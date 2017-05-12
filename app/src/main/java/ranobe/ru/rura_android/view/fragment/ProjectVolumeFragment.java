@@ -18,6 +18,7 @@ import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView {
 
   private ProjectVolumeAdapter adapter;
+  private String projectUrl;
 
   public ProjectVolumeFragment() {
     //https://developer.android.com/samples/RecyclerView/src/com.example.android.recyclerview/RecyclerViewFragment.html
@@ -43,6 +44,7 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
     recyclerView.setAdapter(adapter);
 
     ProjectActivity activity = (ProjectActivity) getActivity();
+    projectUrl = activity.getProjectUrl();
     ProjectVolumePresenter presenter = new ProjectVolumeImplPresenter(this, activity.getProjectId());
     presenter.showVolumes();
 
@@ -50,6 +52,6 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
   }
 
   @Override public void showVolumes(List<Volume> volumes) {
-    adapter.setVolume(volumes);
+    adapter.setVolume(volumes, projectUrl);
   }
 }

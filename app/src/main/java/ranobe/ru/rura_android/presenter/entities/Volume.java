@@ -12,9 +12,10 @@ public class Volume implements Serializable {
   private String volumeType;
   private String volumeStatus;
   private String nameRu;
+  private String url;
 
   public Volume(int projectId, int volumeId, float index, String name, int coverId,
-      String volumeType, String volumeStatus, String nameRu) {
+      String volumeType, String volumeStatus, String nameRu, String url) {
     this.projectId = projectId;
     this.volumeId = volumeId;
     this.index = index;
@@ -23,6 +24,7 @@ public class Volume implements Serializable {
     this.volumeType = volumeType;
     this.volumeStatus = volumeStatus;
     this.nameRu = nameRu;
+    this.url = url;
   }
 
   public int getProjectId() {
@@ -87,5 +89,13 @@ public class Volume implements Serializable {
 
   public void setNameRu(String nameRu) {
     this.nameRu = nameRu;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 }

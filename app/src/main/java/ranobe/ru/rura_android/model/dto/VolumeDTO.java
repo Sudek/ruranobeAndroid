@@ -12,6 +12,7 @@ public class VolumeDTO {
   @SerializedName("volumeType") @Expose private String volumeType;
   @SerializedName("volumeStatus") @Expose private String volumeStatus;
   @SerializedName("nameRu") @Expose private String nameRu;
+  @SerializedName("url") @Expose private String url;
 
   public Integer getVolumeId() {
     return volumeId;
@@ -75,5 +76,13 @@ public class VolumeDTO {
 
   public void setNameRu(String nameRu) {
     this.nameRu = nameRu;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 }

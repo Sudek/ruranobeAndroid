@@ -15,14 +15,14 @@ import ranobe.ru.rura_android.presenter.ReaderPresenter;
 import ranobe.ru.rura_android.presenter.ReaderPresenterImpl;
 import ranobe.ru.rura_android.presenter.entities.Volume;
 
-public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder> {
+public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder>
+    implements ReaderView {
 
-  private final static String VOLUME_ID = "VOLUME_ID";
   private List<Volume> volumes = new ArrayList<>();
   private Context context;
   private String projectUrl;
 
-  public void setVolume(List<Volume> volumes, String projectUrl) {
+  public void setData(List<Volume> volumes, String projectUrl) {
     this.volumes = volumes;
     this.projectUrl = projectUrl;
     notifyDataSetChanged();
@@ -40,19 +40,26 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     Volume volume = volumes.get(position);
     holder.volumeName.setText(volume.getNameRu());
 
-    Intent intent = new Intent(context, FolioActivity.class);
-    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_TYPE, FolioActivity.EpubSourceType.RAW);
-    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_PATH, R.raw.gakusen_toshi_asterisk_01);
-//storage/emulated/0/Download/Tate_no_Yuusha_no_Nariagari_01.epub
+    //storage/emulated/0/Download/Tate_no_Yuusha_no_Nariagari_01.epub
     holder.itemView.setOnClickListener(view -> {
       ReaderPresenter presenter = new ReaderPresenterImpl(projectUrl, volume.getUrl());
       presenter.showText();
-      context.startActivity(intent);
     });
   }
 
   @Override public int getItemCount() {
     return volumes.size();
+  }
+
+  @Override public void startFolio() {
+    Intent intent = new Intent(context, FolioActivity.class);
+    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_TYPE, FolioActivity.EpubSourceType.RAW);
+    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_PATH, R.raw.gakusen_toshi_asterisk_01);
+    context.startActivity(intent);
+  }
+
+  @Override public void showError(String error) {
+
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {

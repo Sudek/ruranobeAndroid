@@ -15,6 +15,7 @@ public class ProjectMapper {
         .flatMap(Observable::from)
         .filter(volumeDTO -> volumeDTO.getImageOne() != null)
         .filter(volumeDTO -> volumeDTO.getSequenceNumber() == 1)
+        .first()
         .flatMap(new Func1<VolumeDTO, Observable<Project>>() {
           @Override public Observable<Project> call(VolumeDTO volumeDTO) {
             return Observable.zip(Observable.just(volumeDTO),

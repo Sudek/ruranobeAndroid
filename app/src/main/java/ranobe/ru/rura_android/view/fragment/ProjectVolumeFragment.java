@@ -52,6 +52,6 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
   }
 
   @Override public void showVolumes(List<Volume> volumes) {
-    adapter.setVolume(volumes, projectUrl);
+    adapter.setData(volumes, projectUrl);
   }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.folioreader.activity.FolioActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,9 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
 
     //storage/emulated/0/Download/Tate_no_Yuusha_no_Nariagari_01.epub
     holder.itemView.setOnClickListener(view -> {
-      ReaderPresenter presenter = new ReaderPresenterImpl(projectUrl, volume.getUrl());
-      presenter.showText();
+      ReaderPresenter presenter = new ReaderPresenterImpl(projectUrl, volume.getUrl(), this);
+      presenter.downloadEpub();
+      Toast.makeText(context, "Файл начал скачиваться", Toast.LENGTH_LONG).show();
     });
   }
 
@@ -51,10 +53,10 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     return volumes.size();
   }
 
-  @Override public void startFolio() {
+  @Override public void startFolio(String path) {
     Intent intent = new Intent(context, FolioActivity.class);
-    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_TYPE, FolioActivity.EpubSourceType.RAW);
-    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_PATH, R.raw.gakusen_toshi_asterisk_01);
+    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_TYPE, FolioActivity.EpubSourceType.SD_CARD);
+    intent.putExtra(FolioActivity.INTENT_EPUB_SOURCE_PATH, path);
     context.startActivity(intent);
   }
 

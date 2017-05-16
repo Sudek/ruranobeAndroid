@@ -35,6 +35,8 @@ public class TextMapper {
                 // you can access body of response
                 sink.writeAll(responseBodyResponse.body().source());
                 sink.close();
+                subscriber.onNext(file);
+                subscriber.onCompleted();
               } catch (IOException e) {
                 e.printStackTrace();
               }

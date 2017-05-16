@@ -22,7 +22,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   private List<Preview> previews = new ArrayList<>();
   private Context context;
 
-  public void setProjectDTOs(List<Preview> previews) {
+  public void setProjects(List<Preview> previews) {
     this.previews = previews;
     notifyDataSetChanged();
   }

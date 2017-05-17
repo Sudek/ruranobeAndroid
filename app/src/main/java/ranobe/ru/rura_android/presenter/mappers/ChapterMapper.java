@@ -2,7 +2,7 @@ package ranobe.ru.rura_android.presenter.mappers;
 
     import java.util.List;
     import ranobe.ru.rura_android.model.MainModelImpl;
-    import ranobe.ru.rura_android.presenter.entities.Chapter;
+    import ranobe.ru.rura_android.presenter.vo.Chapter;
     import rx.Observable;
 
 public class ChapterMapper {

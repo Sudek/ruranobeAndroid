@@ -1,6 +1,6 @@
 package ranobe.ru.rura_android.presenter;
 
-import ranobe.ru.rura_android.presenter.entities.Project;
+import ranobe.ru.rura_android.presenter.vo.Project;
 import ranobe.ru.rura_android.presenter.mappers.ProjectMapper;
 import ranobe.ru.rura_android.view.fragment.ProjectInfoView;
 import rx.Observer;

@@ -3,7 +3,7 @@ package ranobe.ru.rura_android.presenter.mappers;
 import java.util.List;
 import java.util.Objects;
 import ranobe.ru.rura_android.model.MainModelImpl;
-import ranobe.ru.rura_android.presenter.entities.Volume;
+import ranobe.ru.rura_android.presenter.vo.Volume;
 import rx.Observable;
 
 public class VolumeMapper {

@@ -11,7 +11,7 @@ import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ProjectVolumeImplPresenter;
 import ranobe.ru.rura_android.presenter.ProjectVolumePresenter;
-import ranobe.ru.rura_android.presenter.entities.Volume;
+import ranobe.ru.rura_android.presenter.vo.Volume;
 import ranobe.ru.rura_android.view.ProjectActivity;
 import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 

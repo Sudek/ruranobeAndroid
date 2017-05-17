@@ -1,4 +1,4 @@
-package ranobe.ru.rura_android.presenter.entities;
+package ranobe.ru.rura_android.presenter.vo;
 
 import java.io.Serializable;
 

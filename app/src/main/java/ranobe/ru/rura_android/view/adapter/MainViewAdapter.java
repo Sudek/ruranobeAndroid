@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.presenter.entities.Preview;
+import ranobe.ru.rura_android.presenter.vo.Preview;
 import ranobe.ru.rura_android.view.ProjectActivity;
 
 public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHolder> {

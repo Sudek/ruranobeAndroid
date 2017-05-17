@@ -11,16 +11,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.presenter.Presenter;
 import ranobe.ru.rura_android.presenter.PreviewPresenter;
-import ranobe.ru.rura_android.presenter.entities.Preview;
+import ranobe.ru.rura_android.presenter.PreviewPreviewPresenterImpl;
+import ranobe.ru.rura_android.presenter.vo.Preview;
 import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, MainView {
 
   private static final String TAG = "MainActivity";
   private RecyclerView recyclerView;
-  private Presenter presenter;
+  private PreviewPresenter previewPresenter;
   private MainViewAdapter adapter;
 
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_layout);
 
-    presenter = new PreviewPresenter(this);
+    previewPresenter = new PreviewPreviewPresenterImpl(this);
 
     recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     recyclerView.setHasFixedSize(true);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     adapter = new MainViewAdapter();
     recyclerView.setAdapter(adapter);
 
-    presenter.showPreviews();
+    previewPresenter.showPreviews();
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
   @Override public boolean onQueryTextChange(String s) {
     recyclerView.scrollToPosition(0);
-    presenter.showFilteredPreview(s);
+    previewPresenter.showFilteredPreview(s);
     return true;
   }
 

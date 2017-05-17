@@ -14,7 +14,7 @@ import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ReaderPresenter;
 import ranobe.ru.rura_android.presenter.ReaderPresenterImpl;
-import ranobe.ru.rura_android.presenter.entities.Volume;
+import ranobe.ru.rura_android.presenter.vo.Volume;
 
 public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder>
     implements ReaderView {

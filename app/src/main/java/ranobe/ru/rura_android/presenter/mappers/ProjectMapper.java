@@ -2,7 +2,7 @@ package ranobe.ru.rura_android.presenter.mappers;
 
 import ranobe.ru.rura_android.model.MainModelImpl;
 import ranobe.ru.rura_android.model.dto.VolumeDTO;
-import ranobe.ru.rura_android.presenter.entities.Project;
+import ranobe.ru.rura_android.presenter.vo.Project;
 import rx.Observable;
 import rx.functions.Func1;
 

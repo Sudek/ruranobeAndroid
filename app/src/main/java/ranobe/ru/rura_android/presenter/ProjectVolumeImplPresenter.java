@@ -1,7 +1,7 @@
 package ranobe.ru.rura_android.presenter;
 
 import java.util.List;
-import ranobe.ru.rura_android.presenter.entities.Volume;
+import ranobe.ru.rura_android.presenter.vo.Volume;
 import ranobe.ru.rura_android.presenter.mappers.VolumeMapper;
 import ranobe.ru.rura_android.view.fragment.ProjectVolumeView;
 import rx.Observer;

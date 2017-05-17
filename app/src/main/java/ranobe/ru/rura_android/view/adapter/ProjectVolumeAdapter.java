@@ -60,10 +60,6 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     context.startActivity(intent);
   }
 
-  @Override public void showError(String error) {
-
-  }
-
   class ViewHolder extends RecyclerView.ViewHolder {
 
     private TextView volumeName;

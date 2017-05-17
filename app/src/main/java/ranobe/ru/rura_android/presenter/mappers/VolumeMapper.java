@@ -15,8 +15,8 @@ public class VolumeMapper {
         .flatMap(Observable::from)
         .filter(volumeDTO -> volumeDTO.getImageOne() != null) //delete corrupted values
         .filter(volumeDTO -> volumeDTO.getNameRu() != null) //delete untranslated values
-        .filter(volumeDTO -> Objects.equals(volumeDTO.getVolumeType(),
-            "Ранобэ")) //Now support only ranobe
+        .filter(volumeDTO -> volumeDTO.getVolumeStatus().matches("DONE|TRANSLATING|DECOR"))
+        .filter(volumeDTO -> Objects.equals(volumeDTO.getVolumeType(), "Ранобэ")) //Now support only ranobe
         .map(volumeDTO -> new Volume(volumeDTO.getProjectId(), volumeDTO.getVolumeId(),
             volumeDTO.getSequenceNumber(), volumeDTO.getNameTitle(), volumeDTO.getImageOne(),
             volumeDTO.getVolumeType(), volumeDTO.getVolumeType(), volumeDTO.getNameRu(),

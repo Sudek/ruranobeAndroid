@@ -6,13 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.PreviewPresenter;
-import ranobe.ru.rura_android.presenter.PreviewPreviewPresenterImpl;
 import ranobe.ru.rura_android.presenter.vo.Preview;
 import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_layout);
 
-    previewPresenter = new PreviewPreviewPresenterImpl(this);
+    previewPresenter = new PreviewPresenter(this);
 
     recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     recyclerView.setHasFixedSize(true);
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     adapter = new MainViewAdapter();
     recyclerView.setAdapter(adapter);
 
-    previewPresenter.showPreviews();
+    previewPresenter.onCreate(savedInstanceState);
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,14 +59,19 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     return true;
   }
 
-  @Override public void showData(List<Preview> previews) {
+  @Override public void showPreview(List<Preview> previews) {
     adapter.setProjects(previews);
   }
 
-  @Override public void showError(String error) {
+  @Override protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    previewPresenter.onSaveInstanceState(outState);
   }
 
-  @Override public void showEmptyList() {
-    Log.d(TAG, "emptyList");
+  @Override protected void onStop() {
+    super.onStop();
+    if(previewPresenter != null) {
+      previewPresenter.onStop();
+    }
   }
 }

@@ -25,7 +25,7 @@ public class TextMapper {
                 // this is specific case, it's up to you how you want to save your file
                 // if you are not downloading file from direct link, you might be lucky to obtain file name from header
                 //String fileName = header.replace("attachment; filename*=UTF-8", "");
-                String fileName = header.substring(29);
+                String fileName = header.replace("attachment; filename=", "");
 
                 // will create file in global Music directory, can be any other directory, just don't forget to handle permissions
                 File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)

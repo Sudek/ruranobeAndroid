@@ -13,7 +13,6 @@ import butterknife.ButterKnife;
 import com.squareup.picasso.Picasso;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
-import ranobe.ru.rura_android.presenter.ProjectInfoPresenterImpl;
 import ranobe.ru.rura_android.presenter.vo.Project;
 import ranobe.ru.rura_android.view.ProjectActivity;
 
@@ -25,6 +24,8 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
   @Bind(R.id.info_status) TextView status;
   @Bind(R.id.info_translation) TextView translationStatus;
   @Bind(R.id.info_about_project) TextView description;
+
+  private ProjectInfoPresenter infoPresenter;
 
   public ProjectInfoFragment() {
   }
@@ -40,8 +41,8 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
 
     ProjectActivity activity = (ProjectActivity) getActivity();
 
-    ProjectInfoPresenter infoPresenter = new ProjectInfoPresenterImpl(this, activity.getProjectId());
-    infoPresenter.showProjectInfo();
+    infoPresenter = new ProjectInfoPresenter(this, activity.getProjectId());
+    infoPresenter.onCreate(savedInstanceState);
 
     return view;
   }
@@ -56,5 +57,15 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
         .load("http:" + project.getUlrCover())
         .resize(450, 650)
         .into(cover);
+  }
+
+  @Override public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    infoPresenter.onSaveInstanceState(outState);
+  }
+
+  @Override public void onStop() {
+    super.onStop();
+    infoPresenter.onStop();
   }
 }

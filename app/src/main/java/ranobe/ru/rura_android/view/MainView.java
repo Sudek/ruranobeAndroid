@@ -5,9 +5,6 @@ import ranobe.ru.rura_android.presenter.vo.Preview;
 
 public interface MainView {
 
-  void showData(List<Preview> previews);
+  void showPreview(List<Preview> previews);
 
-  void showError(String error);
-
-  void showEmptyList();
 }

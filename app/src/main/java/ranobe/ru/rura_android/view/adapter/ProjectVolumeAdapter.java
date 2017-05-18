@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ReaderPresenter;
-import ranobe.ru.rura_android.presenter.ReaderPresenterImpl;
 import ranobe.ru.rura_android.presenter.vo.Volume;
 
 public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdapter.ViewHolder>
@@ -43,7 +42,7 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
 
     //storage/emulated/0/Download/Tate_no_Yuusha_no_Nariagari_01.epub
     holder.itemView.setOnClickListener(view -> {
-      ReaderPresenter presenter = new ReaderPresenterImpl(projectUrl, volume.getUrl(), this);
+      ReaderPresenter presenter = new ReaderPresenter(projectUrl, volume.getUrl(), this);
       presenter.downloadEpub();
       Toast.makeText(context, "Файл начал скачиваться", Toast.LENGTH_LONG).show();
     });

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.List;
 import ranobe.ru.rura_android.R;
-import ranobe.ru.rura_android.presenter.ProjectVolumeImplPresenter;
 import ranobe.ru.rura_android.presenter.ProjectVolumePresenter;
 import ranobe.ru.rura_android.presenter.vo.Volume;
 import ranobe.ru.rura_android.view.ProjectActivity;
@@ -18,10 +17,10 @@ import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView {
 
   private ProjectVolumeAdapter adapter;
+  private ProjectVolumePresenter volumePresenter;
   private String projectUrl;
 
   public ProjectVolumeFragment() {
-    //https://developer.android.com/samples/RecyclerView/src/com.example.android.recyclerview/RecyclerViewFragment.html
   }
 
   @Override
@@ -45,13 +44,23 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
 
     ProjectActivity activity = (ProjectActivity) getActivity();
     projectUrl = activity.getProjectUrl();
-    ProjectVolumePresenter presenter = new ProjectVolumeImplPresenter(this, activity.getProjectId());
-    presenter.showVolumes();
+    volumePresenter = new ProjectVolumePresenter(this, activity.getProjectId());
+    volumePresenter.onCreate(savedInstanceState);
 
     return view;
   }
 
   @Override public void showVolumes(List<Volume> volumes) {
     adapter.setData(volumes, projectUrl);
+  }
+
+  @Override public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    volumePresenter.onSaveInstanceState(outState);
+  }
+
+  @Override public void onStop() {
+    super.onStop();
+    volumePresenter.onStop();
   }
 }

@@ -1,8 +1,9 @@
 package ranobe.ru.rura_android.presenter.vo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Text {
+public class Text implements Serializable {
   private int textId;
   private int orderNumber;
   private String textHtml;

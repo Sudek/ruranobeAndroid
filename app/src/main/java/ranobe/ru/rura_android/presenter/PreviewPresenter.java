@@ -21,7 +21,7 @@ public class PreviewPresenter extends LifecycleCallbacks {
   }
 
   public void loadPreviews() {
-    Subscription subscription = previewMapper.previews().subscribe(new Observer<List<Preview>>() {
+    Subscription subscription = previewMapper.previews(dataRepository).subscribe(new Observer<List<Preview>>() {
       @Override public void onCompleted() {
       }
 

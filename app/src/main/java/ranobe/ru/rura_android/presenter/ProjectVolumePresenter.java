@@ -23,19 +23,20 @@ public class ProjectVolumePresenter extends LifecycleCallbacks {
   }
 
   public void loadVolumes() {
-    Subscription subscription = mapper.volumes(projectId)
-        .subscribe(new Observer<List<Volume>>() {
-          @Override public void onCompleted() {
-          }
-          @Override public void onError(Throwable e) {
-          }
-          @Override public void onNext(List<Volume> volumes) {
-            if (volumes != null && !volumes.isEmpty()) {
-              volumeList = volumes;
-              projectVolumeView.showVolumes(volumes);
-            }
-          }
-        });
+    Subscription subscription = mapper.volumes(dataRepository, projectId).subscribe(new Observer<List<Volume>>() {
+      @Override public void onCompleted() {
+      }
+
+      @Override public void onError(Throwable e) {
+      }
+
+      @Override public void onNext(List<Volume> volumes) {
+        if (volumes != null && !volumes.isEmpty()) {
+          volumeList = volumes;
+          projectVolumeView.showVolumes(volumes);
+        }
+      }
+    });
     addSubscription(subscription);
   }
 
@@ -51,7 +52,6 @@ public class ProjectVolumePresenter extends LifecycleCallbacks {
   }
 
   public void onSaveInstanceState(Bundle outState) {
-    if (volumeList != null)
-      outState.putSerializable(BUNDLE_VOLUME, new ArrayList<>(volumeList));
+    if (volumeList != null) outState.putSerializable(BUNDLE_VOLUME, new ArrayList<>(volumeList));
   }
 }

@@ -7,10 +7,7 @@ import rx.Observable;
 import rx.functions.Func1;
 
 public class ProjectMapper {
-
-  private MainModelImpl mainModel = new MainModelImpl();
-
-  public Observable<Project> projects(int projectId) {
+  public Observable<Project> projects(MainModelImpl mainModel, int projectId) {
     return mainModel.getVolumes(projectId)
         .flatMap(Observable::from)
         .filter(volumeDTO -> volumeDTO.getImageOne() != null)

@@ -13,6 +13,7 @@ public class VolumeDTO {
   @SerializedName("volumeStatus") @Expose private String volumeStatus;
   @SerializedName("nameRu") @Expose private String nameRu;
   @SerializedName("url") @Expose private String url;
+  @SerializedName("nameFile") @Expose private String nameFile;
 
   public Integer getVolumeId() {
     return volumeId;
@@ -84,5 +85,13 @@ public class VolumeDTO {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+  public String getFileName() {
+    return nameFile;
+  }
+
+  public void setFileName(String nameFile) {
+    this.nameFile = nameFile;
   }
 }

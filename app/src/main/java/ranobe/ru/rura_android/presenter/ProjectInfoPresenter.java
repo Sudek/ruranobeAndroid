@@ -21,7 +21,7 @@ public class ProjectInfoPresenter extends LifecycleCallbacks {
   }
 
   public void loadProjectInfo() {
-    Subscription subscription = mapper.projects(projectId).subscribe(new Observer<Project>() {
+    Subscription subscription = mapper.projects(dataRepository, projectId).subscribe(new Observer<Project>() {
 
       @Override public void onCompleted() {
 
@@ -52,11 +52,7 @@ public class ProjectInfoPresenter extends LifecycleCallbacks {
 
   public void onSaveInstanceState(Bundle outState) {
     if (savedProject != null) {
-      outState.putSerializable(BUNDLE_PROJECT,
-          new Project(savedProject.getProjectId(), savedProject.getName(), savedProject.getAuthor(),
-              savedProject.getStatus(), savedProject.getTranslationStatus(),
-              savedProject.getDescription(), savedProject.getUlrCover(),
-              savedProject.getLastUpdate()));
+      outState.putSerializable(BUNDLE_PROJECT, savedProject);
     }
   }
 }

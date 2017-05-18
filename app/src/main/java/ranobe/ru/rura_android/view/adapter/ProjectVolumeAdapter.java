@@ -42,8 +42,9 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
 
     //storage/emulated/0/Download/Tate_no_Yuusha_no_Nariagari_01.epub
     holder.itemView.setOnClickListener(view -> {
-      ReaderPresenter presenter = new ReaderPresenter(projectUrl, volume.getUrl(), this);
-      presenter.downloadEpub();
+      ReaderPresenter presenter = new ReaderPresenter(projectUrl, volume.getUrl(),
+          volume.getNameFile(), this);
+      presenter.loadEpub();
       Toast.makeText(context, "Файл начал скачиваться", Toast.LENGTH_LONG).show();
     });
   }

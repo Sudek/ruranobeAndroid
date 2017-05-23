@@ -3,7 +3,7 @@ package ranobe.ru.rura_android.presenter;
 import android.os.Bundle;
 import android.util.Log;
 import java.io.File;
-import ranobe.ru.rura_android.presenter.mappers.TextMapper;
+import ranobe.ru.rura_android.presenter.mappers.DownloadMapper;
 import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 import rx.Observer;
 import rx.Subscription;
@@ -15,7 +15,7 @@ public class ReaderPresenter extends LifecycleCallbacks {
   private String volumeUrl;
   private String fileName;
   private String downloadPath;
-  private TextMapper mapper = new TextMapper();
+  private DownloadMapper mapper = new DownloadMapper();
   private ProjectVolumeAdapter adapter;
 
   public ReaderPresenter(String projectUrl, String volumeUrl, String fileName,
@@ -36,7 +36,7 @@ public class ReaderPresenter extends LifecycleCallbacks {
           }
 
           @Override public void onNext(File file) {
-            if (file != null && downloadPath != null) {
+            if (file != null) {
               String path = file.getAbsolutePath();
               Log.d("rura", "file was download");
               Log.d("rura", "File downloaded to " + path);

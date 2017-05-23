@@ -40,7 +40,6 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
     Volume volume = volumes.get(position);
     holder.volumeName.setText(volume.getNameRu());
 
-    //storage/emulated/0/Download/Tate_no_Yuusha_no_Nariagari_01.epub
     holder.itemView.setOnClickListener(view -> {
       ReaderPresenter presenter = new ReaderPresenter(projectUrl, volume.getUrl(),
           volume.getNameFile(), this);

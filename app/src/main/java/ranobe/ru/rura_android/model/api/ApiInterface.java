@@ -5,7 +5,6 @@ import java.util.List;
 import ranobe.ru.rura_android.model.dto.ChapterDTO;
 import ranobe.ru.rura_android.model.dto.ImageDTO;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
-import ranobe.ru.rura_android.model.dto.TextDTO;
 import ranobe.ru.rura_android.model.dto.VolumeDTO;
 import retrofit.Response;
 import retrofit.http.GET;
@@ -25,9 +24,6 @@ public interface ApiInterface {
 
   @GET("volumes/{volumeId}/chapters")
   Observable<List<ChapterDTO>> getChapters(@Path("volumeId") int volumeId);
-
-  @GET("chapters/{chapterId}/text")
-  Observable<TextDTO> getText(@Path("chapterId") int chapterId);
 
   @GET("chapters/{chapterId}/illustration")
   Observable<List<ImageDTO>> getIllustration(@Path("chapterId") int chapterId);

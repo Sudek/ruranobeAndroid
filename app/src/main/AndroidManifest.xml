@@ -25,6 +25,10 @@
         android:label="@string/app_name"
         />
     <activity
+        android:name=".view.DownloadedActivity"
+        android:label="@string/app_name"
+        />
+    <activity
         android:name="com.folioreader.activity.FolioActivity"
         android:label="@string/app_name"
         />

@@ -11,16 +11,22 @@ import retrofit.Response;
 import rx.Observable;
 import rx.functions.Func1;
 
-public class TextMapper {
+public class DownloadMapper {
   //http://www.codexpedia.com/android/android-download-large-file-using-retrofit-streaming/
-  public Observable<File> volumeFileEpub(MainModelImpl mainModel, String projectUrl, String volumeUrl, String fileName) {
+  public Observable<File> volumeFileEpub(MainModelImpl mainModel, String projectUrl,
+      String volumeUrl, String fileName) {
     return mainModel.getVolumeEpub(projectUrl, volumeUrl)
         .flatMap(new Func1<Response<ResponseBody>, Observable<File>>() {
           @Override public Observable<File> call(Response<ResponseBody> responseBodyResponse) {
             return Observable.create(subscriber -> {
               try {
-                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                    .getAbsoluteFile(), fileName);
+                File folder = new File(
+                    Environment.getExternalStorageDirectory() + File.separator + "Ruranobe");
+                if (!folder.exists()) {
+                  folder.mkdirs();
+                }
+                File file = new File(Environment.getExternalStorageDirectory() + File.separator + "Ruranobe"
+                    , fileName);
                 BufferedSink sink = Okio.buffer(Okio.sink(file));
                 sink.writeAll(responseBodyResponse.body().source());
                 sink.close();

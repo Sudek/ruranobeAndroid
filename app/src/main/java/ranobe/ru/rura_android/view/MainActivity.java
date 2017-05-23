@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,13 +15,12 @@ import ranobe.ru.rura_android.presenter.PreviewPresenter;
 import ranobe.ru.rura_android.presenter.vo.Preview;
 import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, MainView {
+public class MainActivity extends AppCompatActivity
+    implements SearchView.OnQueryTextListener, MainView {
 
-  private static final String TAG = "MainActivity";
   private RecyclerView recyclerView;
   private PreviewPresenter previewPresenter;
   private MainViewAdapter adapter;
-
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -59,6 +59,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     return true;
   }
 
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    if(item.getItemId() == R.id.download)
+    {
+      Intent intent = new Intent(this, DownloadedActivity.class);
+      startActivity(intent);
+    }
+    return true;
+  }
+
   @Override public void showPreview(List<Preview> previews) {
     adapter.setProjects(previews);
   }
@@ -70,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
   @Override protected void onStop() {
     super.onStop();
-    if(previewPresenter != null) {
+    if (previewPresenter != null) {
       previewPresenter.onStop();
     }
   }

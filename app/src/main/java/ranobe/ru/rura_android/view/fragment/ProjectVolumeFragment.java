@@ -32,9 +32,9 @@ public class ProjectVolumeFragment extends Fragment implements ProjectVolumeView
   public android.view.View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    View view = inflater.inflate(R.layout.project_volume_list, container, false);
+    View view = inflater.inflate(R.layout.list_layout, container, false);
 
-    RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChapters);
+    RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewVolumes);
     recyclerView.setHasFixedSize(true);
 
     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity());

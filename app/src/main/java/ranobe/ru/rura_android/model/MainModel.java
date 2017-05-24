@@ -9,7 +9,7 @@ import ranobe.ru.rura_android.model.dto.VolumeDTO;
 import retrofit.Response;
 import rx.Observable;
 
-interface MainModel {
+public interface MainModel {
 
   Observable<List<ProjectDTO>> getProjects();
 

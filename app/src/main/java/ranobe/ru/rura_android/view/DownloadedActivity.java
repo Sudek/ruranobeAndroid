@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +20,9 @@ public class DownloadedActivity extends AppCompatActivity implements DownloadedV
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.project_volume_list);
+    setContentView(R.layout.list_layout);
 
-    recyclerView = (RecyclerView) findViewById(R.id.recyclerViewChapters);
+    recyclerView = (RecyclerView) findViewById(R.id.recyclerViewVolumes);
     recyclerView.setHasFixedSize(true);
 
     LinearLayoutManager llm = new LinearLayoutManager(this);

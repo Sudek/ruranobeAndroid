@@ -25,7 +25,7 @@ public class DownloadedAdapter extends RecyclerView.Adapter<DownloadedAdapter.Vi
 
   @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View v = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.chapter_element_layout, parent, false);
+        .inflate(R.layout.element_list_layout, parent, false);
     context = parent.getContext();
     return new ViewHolder(v);
   }

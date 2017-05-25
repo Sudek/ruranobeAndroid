@@ -8,15 +8,18 @@ import rx.subscriptions.CompositeSubscription;
 
 public class LifecycleCallbacks {
 
-  @Inject protected MainModel mainModel;
+  @Inject
+  protected MainModel mainModel;
 
-  @Inject CompositeSubscription compositeSubscription;
+
+  @Inject
+  CompositeSubscription compositeSubscription;
 
   public LifecycleCallbacks() {
     App.getComponent().inject(this);
   }
 
-  protected void addSubscription(Subscription subscription) {
+  public void addSubscription(Subscription subscription) {
     compositeSubscription.add(subscription);
   }
 

@@ -9,13 +9,17 @@ import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
 import ranobe.ru.rura_android.presenter.ProjectVolumePresenter;
 import ranobe.ru.rura_android.presenter.ReaderPresenter;
 
-@Singleton
-@Component(modules = {ModelModule.class, PresenterModule.class})
+@Singleton @Component(modules = { ModelModule.class, PresenterModule.class})
 public interface AppComponent {
   void inject(MainModelImpl data);
+
   void inject(LifecycleCallbacks callbacks);
+
   void inject(PreviewPresenter previewPresenter);
+
   void inject(ProjectInfoPresenter projectInfoPresenter);
+
   void inject(ProjectVolumePresenter projectVolumePresenter);
+
   void inject(ReaderPresenter readerPresenter);
 }

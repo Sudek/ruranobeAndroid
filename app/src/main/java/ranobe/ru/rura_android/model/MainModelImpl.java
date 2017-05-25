@@ -16,8 +16,7 @@ import rx.schedulers.Schedulers;
 
 public class MainModelImpl implements MainModel {
 
-  @Inject
-  ApiInterface apiInterface;
+  @Inject ApiInterface apiInterface;
 
   public MainModelImpl() {
     App.getComponent().inject(this);

@@ -10,7 +10,11 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import java.util.List;
+import javax.inject.Inject;
 import ranobe.ru.rura_android.R;
+import ranobe.ru.rura_android.di.view.DaggerViewComponent;
+import ranobe.ru.rura_android.di.view.MainViewModule;
+import ranobe.ru.rura_android.di.view.ViewComponent;
 import ranobe.ru.rura_android.presenter.PreviewPresenter;
 import ranobe.ru.rura_android.presenter.vo.Preview;
 import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
@@ -18,9 +22,10 @@ import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 public class MainActivity extends AppCompatActivity
     implements SearchView.OnQueryTextListener, MainView {
 
-
+  @Inject
   PreviewPresenter previewPresenter;
 
+  private ViewComponent viewComponent;
   private RecyclerView recyclerView;
   private MainViewAdapter adapter;
 
@@ -28,7 +33,10 @@ public class MainActivity extends AppCompatActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_layout);
 
-    previewPresenter = new PreviewPresenter(this);
+    if (viewComponent == null) {
+      viewComponent = DaggerViewComponent.builder().mainViewModule(new MainViewModule(this)).build();
+    }
+    viewComponent.inject(this);
 
     recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     recyclerView.setHasFixedSize(true);

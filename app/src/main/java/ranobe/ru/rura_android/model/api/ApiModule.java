@@ -10,7 +10,6 @@ public class ApiModule {
 
   private static final boolean ENABLE_AUTH = false;
 
-
   public static ApiInterface getApiInterface() {
 
     OkHttpClient httpClient = new OkHttpClient();
@@ -25,7 +24,7 @@ public class ApiModule {
 
 
     Retrofit.Builder builder = new Retrofit.Builder().
-        baseUrl("http://api.novel.tl/") //"http://10.0.3.2:8080/api/ for genymotion
+        baseUrl("http://api.novel.tl/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
 

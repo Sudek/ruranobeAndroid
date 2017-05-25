@@ -1,13 +1,18 @@
 package ranobe.ru.rura_android.presenter.mappers;
 
 import java.util.List;
-import ranobe.ru.rura_android.model.MainModelImpl;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.model.MainModel;
 import ranobe.ru.rura_android.presenter.vo.Preview;
 import rx.Observable;
 
 public class PreviewMapper {
+  @Inject
+  public PreviewMapper() {
+  }
+
   //http://stackoverflow.com/questions/40421471/concat-multiple-calls-with-retrofit-2-and-rxjava
-  public Observable<List<Preview>> previews(MainModelImpl mainModel) {
+  public Observable<List<Preview>> previews(MainModel mainModel) {
     return mainModel.getProjects()
         .flatMap(Observable::from)
         .filter(projectDTO -> projectDTO.getImageId() != null)

@@ -1,6 +1,8 @@
 package ranobe.ru.rura_android.presenter;
 
 import android.os.Bundle;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.di.App;
 import ranobe.ru.rura_android.presenter.mappers.ProjectMapper;
 import ranobe.ru.rura_android.presenter.vo.Project;
 import ranobe.ru.rura_android.view.fragment.ProjectInfoView;
@@ -11,17 +13,21 @@ public class ProjectInfoPresenter extends LifecycleCallbacks {
 
   private static final String BUNDLE_PROJECT = "BUNDLE_PROJECT";
   private ProjectInfoView projectView;
-  private ProjectMapper mapper = new ProjectMapper();
   private Project savedProject;
   private int projectId;
 
+  @Inject
+  ProjectMapper mapper;
+
+
   public ProjectInfoPresenter(ProjectInfoView projectView, int projectId) {
+    App.getComponent().inject(this);
     this.projectView = projectView;
     this.projectId = projectId;
   }
 
   public void loadProjectInfo() {
-    Subscription subscription = mapper.projects(dataRepository, projectId).subscribe(new Observer<Project>() {
+    Subscription subscription = mapper.projects(mainModel, projectId).subscribe(new Observer<Project>() {
 
       @Override public void onCompleted() {
 

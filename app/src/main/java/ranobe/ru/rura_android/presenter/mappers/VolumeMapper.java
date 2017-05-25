@@ -2,12 +2,17 @@ package ranobe.ru.rura_android.presenter.mappers;
 
 import java.util.List;
 import java.util.Objects;
-import ranobe.ru.rura_android.model.MainModelImpl;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.model.MainModel;
 import ranobe.ru.rura_android.presenter.vo.Volume;
 import rx.Observable;
 
 public class VolumeMapper {
-  public Observable<List<Volume>> volumes(MainModelImpl mainModel, int projectId) {
+  @Inject
+  public VolumeMapper() {
+  }
+
+  public Observable<List<Volume>> volumes(MainModel mainModel, int projectId) {
     return mainModel.getVolumes(projectId)
         .flatMap(Observable::from)
         .filter(volumeDTO -> volumeDTO.getImageOne() != null) //delete corrupted values

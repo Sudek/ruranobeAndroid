@@ -4,16 +4,21 @@ import android.os.Environment;
 import com.squareup.okhttp.ResponseBody;
 import java.io.File;
 import java.io.IOException;
+import javax.inject.Inject;
 import okio.BufferedSink;
 import okio.Okio;
-import ranobe.ru.rura_android.model.MainModelImpl;
+import ranobe.ru.rura_android.model.MainModel;
 import retrofit.Response;
 import rx.Observable;
 import rx.functions.Func1;
 
 public class DownloadMapper {
+  @Inject
+  public DownloadMapper() {
+  }
+
   //http://www.codexpedia.com/android/android-download-large-file-using-retrofit-streaming/
-  public Observable<File> volumeFileEpub(MainModelImpl mainModel, String projectUrl,
+  public Observable<File> volumeFileEpub(MainModel mainModel, String projectUrl,
       String volumeUrl, String fileName) {
     return mainModel.getVolumeEpub(projectUrl, volumeUrl)
         .flatMap(new Func1<Response<ResponseBody>, Observable<File>>() {

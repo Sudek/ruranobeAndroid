@@ -1,13 +1,18 @@
 package ranobe.ru.rura_android.presenter.mappers;
 
-import ranobe.ru.rura_android.model.MainModelImpl;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.model.MainModel;
 import ranobe.ru.rura_android.model.dto.VolumeDTO;
 import ranobe.ru.rura_android.presenter.vo.Project;
 import rx.Observable;
 import rx.functions.Func1;
 
 public class ProjectMapper {
-  public Observable<Project> projects(MainModelImpl mainModel, int projectId) {
+  @Inject
+  public ProjectMapper() {
+  }
+
+  public Observable<Project> projects(MainModel mainModel, int projectId) {
     return mainModel.getVolumes(projectId)
         .flatMap(Observable::from)
         .filter(volumeDTO -> volumeDTO.getImageOne() != null)

@@ -3,6 +3,8 @@ package ranobe.ru.rura_android.presenter;
 import android.os.Bundle;
 import android.util.Log;
 import java.io.File;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.di.App;
 import ranobe.ru.rura_android.presenter.mappers.DownloadMapper;
 import ranobe.ru.rura_android.view.adapter.ProjectVolumeAdapter;
 import rx.Observer;
@@ -15,11 +17,14 @@ public class ReaderPresenter extends LifecycleCallbacks {
   private String volumeUrl;
   private String fileName;
   private String downloadPath;
-  private DownloadMapper mapper = new DownloadMapper();
   private ProjectVolumeAdapter adapter;
+
+  @Inject
+  DownloadMapper mapper;
 
   public ReaderPresenter(String projectUrl, String volumeUrl, String fileName,
       ProjectVolumeAdapter adapter) {
+    App.getComponent().inject(this);
     this.adapter = adapter;
     this.projectUrl = projectUrl;
     this.fileName = fileName;
@@ -28,7 +33,7 @@ public class ReaderPresenter extends LifecycleCallbacks {
 
   public void loadEpub() {
     Subscription subscription =
-        mapper.volumeFileEpub(dataRepository, projectUrl, volumeUrl, fileName).subscribe(new Observer<File>() {
+        mapper.volumeFileEpub(mainModel, projectUrl, volumeUrl, fileName).subscribe(new Observer<File>() {
           @Override public void onCompleted() {
           }
 

@@ -2,8 +2,9 @@ package ranobe.ru.rura_android.model;
 
 import com.squareup.okhttp.ResponseBody;
 import java.util.List;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.di.App;
 import ranobe.ru.rura_android.model.api.ApiInterface;
-import ranobe.ru.rura_android.model.api.ApiModule;
 import ranobe.ru.rura_android.model.dto.ChapterDTO;
 import ranobe.ru.rura_android.model.dto.ImageDTO;
 import ranobe.ru.rura_android.model.dto.ProjectDTO;
@@ -15,7 +16,12 @@ import rx.schedulers.Schedulers;
 
 public class MainModelImpl implements MainModel {
 
-  private ApiInterface apiInterface = ApiModule.getApiInterface();
+  @Inject
+  ApiInterface apiInterface;
+
+  public MainModelImpl() {
+    App.getComponent().inject(this);
+  }
 
   @Override public Observable<List<ProjectDTO>> getProjects() {
     return apiInterface.getProjects()

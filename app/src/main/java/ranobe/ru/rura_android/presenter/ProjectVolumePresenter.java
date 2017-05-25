@@ -3,6 +3,8 @@ package ranobe.ru.rura_android.presenter;
 import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.di.App;
 import ranobe.ru.rura_android.presenter.mappers.VolumeMapper;
 import ranobe.ru.rura_android.presenter.vo.Volume;
 import ranobe.ru.rura_android.view.fragment.ProjectVolumeView;
@@ -13,17 +15,20 @@ public class ProjectVolumePresenter extends LifecycleCallbacks {
 
   private static final String BUNDLE_VOLUME = "BUNDLE_VOLUME";
   private ProjectVolumeView projectVolumeView;
-  private VolumeMapper mapper = new VolumeMapper();
   private int projectId;
   private List<Volume> volumeList;
 
+  @Inject
+  VolumeMapper mapper;
+
   public ProjectVolumePresenter(ProjectVolumeView projectVolumeView, int projectId) {
+    App.getComponent().inject(this);
     this.projectVolumeView = projectVolumeView;
     this.projectId = projectId;
   }
 
   public void loadVolumes() {
-    Subscription subscription = mapper.volumes(dataRepository, projectId).subscribe(new Observer<List<Volume>>() {
+    Subscription subscription = mapper.volumes(mainModel, projectId).subscribe(new Observer<List<Volume>>() {
       @Override public void onCompleted() {
       }
 

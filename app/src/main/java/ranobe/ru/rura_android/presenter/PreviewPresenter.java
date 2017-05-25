@@ -3,6 +3,8 @@ package ranobe.ru.rura_android.presenter;
 import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
+import ranobe.ru.rura_android.di.App;
 import ranobe.ru.rura_android.presenter.mappers.PreviewMapper;
 import ranobe.ru.rura_android.presenter.vo.Preview;
 import ranobe.ru.rura_android.view.MainView;
@@ -13,15 +15,19 @@ public class PreviewPresenter extends LifecycleCallbacks {
 
   private static final String BUNDLE_PREVIEWS = "BUNDLE_PREVIEWS";
   private MainView view;
-  private PreviewMapper previewMapper = new PreviewMapper();
   private List<Preview> previews;
 
+  @Inject
+  PreviewMapper previewMapper;
+
+
   public PreviewPresenter(MainView view) {
+    App.getComponent().inject(this);
     this.view = view;
   }
 
   public void loadPreviews() {
-    Subscription subscription = previewMapper.previews(dataRepository).subscribe(new Observer<List<Preview>>() {
+    Subscription subscription = previewMapper.previews(mainModel).subscribe(new Observer<List<Preview>>() {
       @Override public void onCompleted() {
       }
 

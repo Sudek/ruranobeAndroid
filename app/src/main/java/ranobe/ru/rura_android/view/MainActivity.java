@@ -18,8 +18,10 @@ import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 public class MainActivity extends AppCompatActivity
     implements SearchView.OnQueryTextListener, MainView {
 
+
+  PreviewPresenter previewPresenter;
+
   private RecyclerView recyclerView;
-  private PreviewPresenter previewPresenter;
   private MainViewAdapter adapter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {

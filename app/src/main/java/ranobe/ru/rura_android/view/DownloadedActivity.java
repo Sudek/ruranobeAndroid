@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +17,14 @@ import ranobe.ru.rura_android.view.adapter.DownloadedAdapter;
 
 public class DownloadedActivity extends AppCompatActivity implements DownloadedView {
 
+  @BindView(R.id.recyclerViewVolumes) RecyclerView recyclerView;
   private DownloadedAdapter adapter;
-  private RecyclerView recyclerView;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.list_layout);
+    ButterKnife.bind(this);
 
-    recyclerView = (RecyclerView) findViewById(R.id.recyclerViewVolumes);
     recyclerView.setHasFixedSize(true);
 
     LinearLayoutManager llm = new LinearLayoutManager(this);

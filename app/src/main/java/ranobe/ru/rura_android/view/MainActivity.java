@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import java.util.List;
 import javax.inject.Inject;
 import ranobe.ru.rura_android.R;
@@ -22,23 +24,23 @@ import ranobe.ru.rura_android.view.adapter.MainViewAdapter;
 public class MainActivity extends AppCompatActivity
     implements SearchView.OnQueryTextListener, MainView {
 
-  @Inject
-  PreviewPresenter previewPresenter;
+  @Inject PreviewPresenter previewPresenter;
+  @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
   private ViewComponent viewComponent;
-  private RecyclerView recyclerView;
   private MainViewAdapter adapter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_layout);
+    ButterKnife.bind(this);
 
     if (viewComponent == null) {
-      viewComponent = DaggerViewComponent.builder().mainViewModule(new MainViewModule(this)).build();
+      viewComponent =
+          DaggerViewComponent.builder().mainViewModule(new MainViewModule(this)).build();
     }
     viewComponent.inject(this);
 
-    recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     recyclerView.setHasFixedSize(true);
 
     LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -70,8 +72,7 @@ public class MainActivity extends AppCompatActivity
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    if(item.getItemId() == R.id.download)
-    {
+    if (item.getItemId() == R.id.download) {
       Intent intent = new Intent(this, DownloadedActivity.class);
       startActivity(intent);
     }

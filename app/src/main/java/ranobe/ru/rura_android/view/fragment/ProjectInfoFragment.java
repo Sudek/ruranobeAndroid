@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.squareup.picasso.Picasso;
 import ranobe.ru.rura_android.R;
@@ -18,12 +18,12 @@ import ranobe.ru.rura_android.view.ProjectActivity;
 
 public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
 
-  @Bind(R.id.cover) ImageView cover;
-  @Bind(R.id.info_title_name) TextView title;
-  @Bind(R.id.info_author) TextView author;
-  @Bind(R.id.info_status) TextView status;
-  @Bind(R.id.info_translation) TextView translationStatus;
-  @Bind(R.id.info_about_project) TextView description;
+  @BindView(R.id.cover) ImageView cover;
+  @BindView(R.id.info_title_name) TextView title;
+  @BindView(R.id.info_author) TextView author;
+  @BindView(R.id.info_status) TextView status;
+  @BindView(R.id.info_translation) TextView translationStatus;
+  @BindView(R.id.info_about_project) TextView description;
 
   //@Inject
   ProjectInfoPresenter infoPresenter;

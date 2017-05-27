@@ -25,8 +25,7 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
   @BindView(R.id.info_translation) TextView translationStatus;
   @BindView(R.id.info_about_project) TextView description;
 
-  //@Inject
-  ProjectInfoPresenter infoPresenter;
+  private ProjectInfoPresenter infoPresenter;
 
   public ProjectInfoFragment() {
   }

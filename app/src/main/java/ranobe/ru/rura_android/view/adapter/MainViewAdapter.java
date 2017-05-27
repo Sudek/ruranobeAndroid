@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,15 +57,14 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {
-    private TextView name;
-    private TextView author;
-    private ImageView banner;
+
+    @BindView(R.id.projectName) TextView name;
+    @BindView(R.id.authorName) TextView author;
+    @BindView(R.id.banner) ImageView banner;
 
     ViewHolder(View itemView) {
       super(itemView);
-      name = (TextView) itemView.findViewById(R.id.projectName);
-      author = (TextView) itemView.findViewById(R.id.authorName);
-      banner = (ImageView) itemView.findViewById(R.id.banner);
+      ButterKnife.bind(this, itemView);
     }
   }
 }

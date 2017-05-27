@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.folioreader.activity.FolioActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +49,11 @@ public class DownloadedAdapter extends RecyclerView.Adapter<DownloadedAdapter.Vi
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {
-    private TextView name;
+    @BindView(R.id.info_title_name) TextView name;
 
     ViewHolder(View itemView) {
       super(itemView);
-      name = (TextView) itemView.findViewById(R.id.info_title_name);
+      ButterKnife.bind(this, itemView);
     }
   }
 }

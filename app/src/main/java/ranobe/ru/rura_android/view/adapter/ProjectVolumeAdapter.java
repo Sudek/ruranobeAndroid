@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.folioreader.activity.FolioActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,11 +63,11 @@ public class ProjectVolumeAdapter extends RecyclerView.Adapter<ProjectVolumeAdap
 
   class ViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView volumeName;
+    @BindView(R.id.info_title_name) TextView volumeName;
 
-    ViewHolder(View v) {
-      super(v);
-      volumeName = (TextView) v.findViewById(R.id.info_title_name);
+    ViewHolder(View view) {
+      super(view);
+      ButterKnife.bind(this, view);
     }
   }
 }

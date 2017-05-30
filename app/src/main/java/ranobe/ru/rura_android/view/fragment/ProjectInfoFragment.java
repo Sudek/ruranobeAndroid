@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
 import ranobe.ru.rura_android.presenter.vo.Project;
@@ -53,9 +53,10 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
     status.setText(project.getStatus());
     translationStatus.setText("Перевод " + project.getTranslationStatus());
     description.setText(Html.fromHtml(project.getDescription()));
-    Picasso.with(cover.getContext())
+    Glide
+        .with(cover.getContext())
         .load("http:" + project.getUlrCover())
-        .resize(450, 650)
+        .override(450, 650)
         .into(cover);
   }
 

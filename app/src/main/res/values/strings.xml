@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">rura-android</string>
+    <string name="app_name">РуРанобе</string>
   <string name="cover">cover</string>
   <string name="search">Поиск</string>
   <string name="download_volumes">Сохранённые главы</string>
+  <string name="banner">banner</string>
 </resources>

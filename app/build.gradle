@@ -48,10 +48,16 @@ dependencies {
   compile 'com.jakewharton:butterknife:8.4.0'
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
-  compile 'com.squareup.picasso:picasso:2.5.2'
+  compile 'com.github.bumptech.glide:glide:3.7.0'
 
   compile 'com.folioreader:folioreader:0.2.5'
 
+  testCompile 'org.robolectric:robolectric:3.3.2'
+  testCompile 'com.squareup.okhttp:mockwebserver:2.5.0'
   testCompile 'junit:junit:4.12'
-  compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  testCompile 'org.mockito:mockito-core:2.8.9'
+  androidTestCompile 'com.android.support:support-annotations:25.3.1'
+  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+  androidTestCompile 'com.android.support.test:runner:0.5'
+
 }

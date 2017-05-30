@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 import ranobe.ru.rura_android.R;
@@ -40,9 +40,10 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
     Preview preview = previews.get(position);
     holder.name.setText(preview.getProjectName());
     holder.author.setText(preview.getAuthor());
-    Picasso.with(holder.banner.getContext())
+    Glide
+        .with(holder.banner.getContext())
         .load("http:" + preview.getUrlBanner())
-        .resize(425, 125)
+        .override(425, 120)
         .into(holder.banner);
 
     Intent intent = new Intent(context, ProjectActivity.class);

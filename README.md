@@ -4,14 +4,10 @@
 Ruranobe is site about light novels which translated to russian language. 
 http://ruranobe.ru/
 ## **Screenshots** ##
-----------
 <a href="http://imgur.com/qxuMLC5"><img src="http://i.imgur.com/qxuMLC5.png" title="source: imgur.com" /></a>
 <a href="http://imgur.com/fO0yNFE"><img src="http://i.imgur.com/fO0yNFE.png" title="source: imgur.com" /></a>
 
 ## **About used libraries**##
-----------
-
-
  - RxJava
  - RxAndroid
  - Retrofit2
@@ -20,16 +16,13 @@ http://ruranobe.ru/
  - Folio Reader
 
 ## **Developed By** ##
-----------
-
+Andrey Sviridov. 
+Feel free to contact me.
 
 **Note**
---------
-----------
 
 This application is under development yet. So any issue, problem or recomendation is welcome. 
 ## **License** ##
-----------
 
 
     Copyright 2017 Andrey Sviridov

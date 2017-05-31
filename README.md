@@ -2,12 +2,12 @@
 ===================
 
 Ruranobe is site about light novels which translated to russian language. 
-http://ruranobe.ru/
+http://ruranobe.ru
 ## **Screenshots** ##
 <a href="http://imgur.com/qxuMLC5"><img src="http://i.imgur.com/qxuMLC5.png" title="source: imgur.com" /></a>
 <a href="http://imgur.com/fO0yNFE"><img src="http://i.imgur.com/fO0yNFE.png" title="source: imgur.com" /></a>
 
-## **About used libraries**##
+## **About used libraries** ##
  - RxJava
  - RxAndroid
  - Retrofit2
@@ -19,7 +19,7 @@ http://ruranobe.ru/
 Andrey Sviridov. 
 Feel free to contact me.
 
-**Note**
+## **Note** ##
 
 This application is under development yet. So any issue, problem or recomendation is welcome. 
 ## **License** ##

@@ -16,9 +16,7 @@ public class ProjectInfoPresenter extends LifecycleCallbacks {
   private Project savedProject;
   private int projectId;
 
-  @Inject
-  ProjectMapper mapper;
-
+  @Inject ProjectMapper mapper;
 
   public ProjectInfoPresenter(ProjectInfoView projectView, int projectId) {
     App.getComponent().inject(this);
@@ -27,21 +25,22 @@ public class ProjectInfoPresenter extends LifecycleCallbacks {
   }
 
   public void loadProjectInfo() {
-    Subscription subscription = mapper.projects(mainModel, projectId).subscribe(new Observer<Project>() {
+    Subscription subscription =
+        mapper.projects(mainModel, projectId).subscribe(new Observer<Project>() {
 
-      @Override public void onCompleted() {
+          @Override public void onCompleted() {
 
-      }
+          }
 
-      @Override public void onError(Throwable e) {
+          @Override public void onError(Throwable e) {
 
-      }
+          }
 
-      @Override public void onNext(Project project) {
-        savedProject = project;
-        projectView.showProject(project);
-      }
-    });
+          @Override public void onNext(Project project) {
+            savedProject = project;
+            projectView.showProject(project);
+          }
+        });
     addSubscription(subscription);
   }
 

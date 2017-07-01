@@ -1,10 +1,12 @@
 package ranobe.ru.rura_android.presenter.vo;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Project implements Serializable {
-  private int projectId;
+public class Project extends RealmObject implements Serializable {
+  @PrimaryKey private int projectId;
   private String name;
   private String author;
   private String status;
@@ -12,6 +14,10 @@ public class Project implements Serializable {
   private String description;
   private String ulrCover;
   private Date lastUpdate;
+
+  public Project() {
+    super();
+  }
 
   public Project(int projectId, String name, String author, String status, String translationStatus,
       String description, String ulrCover, Date lastUpdate) {

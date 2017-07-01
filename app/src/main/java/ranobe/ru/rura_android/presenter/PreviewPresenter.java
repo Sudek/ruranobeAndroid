@@ -17,9 +17,7 @@ public class PreviewPresenter extends LifecycleCallbacks {
   private MainView view;
   private List<Preview> previews;
 
-  @Inject
-  PreviewMapper previewMapper;
-
+  @Inject PreviewMapper previewMapper;
 
   public PreviewPresenter(MainView view) {
     App.getComponent().inject(this);
@@ -27,20 +25,21 @@ public class PreviewPresenter extends LifecycleCallbacks {
   }
 
   public void loadPreviews() {
-    Subscription subscription = previewMapper.previews(mainModel).subscribe(new Observer<List<Preview>>() {
-      @Override public void onCompleted() {
-      }
+    Subscription subscription =
+        previewMapper.previews(mainModel).subscribe(new Observer<List<Preview>>() {
+          @Override public void onCompleted() {
+          }
 
-      @Override public void onError(Throwable e) {
-      }
+          @Override public void onError(Throwable e) {
+          }
 
-      @Override public void onNext(List<Preview> data) {
-        if (data != null && !data.isEmpty()) {
-          view.showPreview(data);
-          previews = data;
-        }
-      }
-    });
+          @Override public void onNext(List<Preview> data) {
+            if (data != null && !data.isEmpty()) {
+              view.showPreview(data);
+              previews = data;
+            }
+          }
+        });
     addSubscription(subscription);
   }
 

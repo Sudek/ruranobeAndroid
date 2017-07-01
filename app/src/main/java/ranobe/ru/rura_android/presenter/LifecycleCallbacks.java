@@ -11,7 +11,6 @@ public class LifecycleCallbacks {
   @Inject
   protected MainModel mainModel;
 
-
   @Inject
   CompositeSubscription compositeSubscription;
 

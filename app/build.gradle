@@ -52,6 +52,8 @@ dependencies {
 
   compile 'com.folioreader:folioreader:0.2.5'
 
+  compile 'com.github.chrisbanes:PhotoView:2.1.2'
+
   testCompile 'org.robolectric:robolectric:3.3.2'
   testCompile 'com.squareup.okhttp:mockwebserver:2.5.0'
   testCompile 'junit:junit:4.12'

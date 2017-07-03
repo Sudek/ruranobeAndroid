@@ -1,5 +1,6 @@
 package ranobe.ru.rura_android.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -14,9 +15,12 @@ import com.bumptech.glide.Glide;
 import ranobe.ru.rura_android.R;
 import ranobe.ru.rura_android.presenter.ProjectInfoPresenter;
 import ranobe.ru.rura_android.presenter.vo.Project;
+import ranobe.ru.rura_android.view.FullImageActivity;
 import ranobe.ru.rura_android.view.ProjectActivity;
 
 public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
+
+  private final static String COVER_URL = "COVER_URL";
 
   @BindView(R.id.cover) ImageView cover;
   @BindView(R.id.info_title_name) TextView title;
@@ -53,11 +57,17 @@ public class ProjectInfoFragment extends Fragment implements ProjectInfoView {
     status.setText(project.getStatus());
     translationStatus.setText("Перевод " + project.getTranslationStatus());
     description.setText(Html.fromHtml(project.getDescription()));
-    Glide
-        .with(cover.getContext())
+
+    Glide.with(cover.getContext())
         .load("http:" + project.getUlrCover())
         .override(450, 650)
         .into(cover);
+
+    cover.setOnClickListener(v -> {
+      Intent intent = new Intent(getContext(), FullImageActivity.class);
+      intent.putExtra(COVER_URL, project.getUlrCover());
+      startActivity(intent);
+    });
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {

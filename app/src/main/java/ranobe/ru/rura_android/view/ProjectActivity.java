@@ -35,7 +35,7 @@ public class ProjectActivity extends AppCompatActivity {
   private void setupViewPager(ViewPager viewPager) {
     ProjectPagerAdapter adapter = new ProjectPagerAdapter(getSupportFragmentManager());
     adapter.addFragment(new ProjectInfoFragment(), "ОПИСАНИЕ");
-    adapter.addFragment(new ProjectVolumeFragment(), "ТОМА");
+    adapter.addFragment(new ProjectVolumeFragment(), "ТОМЫ");
     viewPager.setAdapter(adapter);
   }
 
